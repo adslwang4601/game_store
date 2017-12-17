@@ -10,27 +10,24 @@ Project Plan
 
 ### 2. Goal
 
-In this project, the group aim to develop a online game store for JavaScript games. The users of this web application include players and developers. Games can be added and sold by developers, and then can be purchased and played online by players. The application will be fully functional and fully tested.
+In this project, the group aims to develop a online game store for JavaScript games. The users of this web application include players and developers. Games can be added and sold by developers, and then can be purchased and played online by players. The application will be fully functional and fully tested.
 
-### 3. Plans
+### 3. Functionalities
 
-First, we need a big fire. Finally, we enclose it in a barrell.
-We will use cockpit purchased from Commander Keen.
+#### Basic Features:
 
-#### 3.1. Ship schematics
+##### Authentication
+##### Basic player functionalities
+##### Basic develop functionalities
+##### Game/service interaction
 
-![schematics](doc/schematics.png)
+#### Advanced Features:
+
+<!--- ![schematics](doc/schematics.png) --->
 
 #### 3.2. Control Methods
 
-* Left string
-* Right string
-* Hand brake
-
 #### 3.3. Priorities
-
-We will prioritize gun assembly as space ship without a big
-gun is a gunless space ship.
 
 ### 4. Practical Arrangement
 
@@ -48,7 +45,7 @@ gun is a gunless space ship.
 #### 4.2 Project Management Tools
 
 * Gitlab: Used for source code management, version control and issue tracking, etc.
-* Slack: Team communication.
+* Slack: Team discussion.
 * Trello: Task management, including task assignment and task status tracking, etc.
 * Google Drive: Sharing relevant materials.
 
@@ -57,24 +54,33 @@ gun is a gunless space ship.
 * Wechat: Instant communication if necessary, e.g., sending notifications to members about important topics posted to the project management tools.
 	
 
-### 5. Process and Time Schedule
+### 5. Steps and Schedule
 
-We communicate using smoke signals at 1 p.m. The finished
-modules are taken to north pole using goverment post services.
+#### 5.1 Steps
 
-* Weeks 1-2: The streams must not cross.
-* Weeks 3-4: If at the hour of despair the streams cross
-	no-one will mention it.
-* Monday, Feb 1st: We shall meet at Stonehenge and check that
-	Egon has delivered proton packs to New York.
+* Planning (DL: 21.12.2017 midnight)
+* Implementing the function Authentication 
+* Constructing models
+* Hooking up views
+* Making templates
+* Game/service interaction
+* Testing the roughly finished project locally
+* Deploying the finished project to Heroku
+* Final submission (DL: 19.2.2018 midnight)
+* Project demonstration
 
+Some steps are possible to be interactive. During the implementation phase (Step 2-6), appropriate testing will be done after finishing each step.
+
+#### 5.2 Schedule
+* 16 Dec-21 Dec: Researching the topic, Collecting materials and Making the project plan.
+* 22 Dec-9 Jan: Realizing the function Authentication. And design of models is accomplished or towards the end.
+* 10 Jan-6 Feb: Developing views, templates and the function Game/service interaction. Trying to do the initial Heroku deployment.
+* 7 Feb-18 Feb: Deploying the project first locally, and then to Heroku. Writing the final documentation.
+
+The schedule is roughly designed. The practical and detailed timeline probably changes and will be recorded during the process of the project.
 
 ### 6. Testing
 
-Every module is dropped from 3rd floor and the remaining parts
-go into the envelope.
+### 7. Risk Analysis
 
 
-### 6. Risk Analysis
-
-If joker shall awaken he will insert kryptonite in our porridge.
