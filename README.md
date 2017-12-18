@@ -67,18 +67,19 @@ The detailed information and tutorials can be found here:
 
 #### 4.1 Steps
 
-* Planning (DL: 21.12.2017 midnight)
-* Implementing the function Authentication 
-* Constructing models
-* Hooking up views
-* Making templates
-* Game/service interaction
-* Testing the roughly finished project locally
-* Deploying the finished project to Heroku
-* Final submission (DL: 19.2.2018 midnight)
-* Project demonstration
+1. Planning (DL: 21.12.2017 midnight)
+2. Implementing the function Authentication
+3. Starting HTML and CSS coding (It will continue until the project is coming to an end) 
+4. Constructing models
+5. Hooking up views
+6. Making templates
+7. Game/service interaction
+8. Testing the roughly finished project locally
+9. Deploying the finished project to Heroku
+10. Final submission (DL: 19.2.2018 midnight)
+11. Project demonstration
 
-Some steps are possible to be interactive. During the implementation phase (Step 2-6), appropriate testing will be done after finishing each function.
+Some steps are possible to be interactive. During the implementation phase (Step 2-7), appropriate testing will be done after finishing each function.
 
 #### 4.2 Schedule
 * 16 Dec-21 Dec: Researching the topic, Collecting materials and Making the project plan.
