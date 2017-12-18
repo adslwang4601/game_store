@@ -35,7 +35,7 @@ In this project, the group aims to develop a online game store for JavaScript ga
 
 
 * Game/service interaction
-	- Messages are exchanged between game and the game service with window.postMessage.
+	- Messages are exchanged between game and the game service with **window.postMessage**.
 	- From the game to the service: Informing a new score (then the score is recorded), Saving the sent game state, Requesting a game state previously saved, Settings telling game specific configuration.
 	- From the service to the game: Loading a saved game state, Informing error information.
 
@@ -45,12 +45,13 @@ In this project, the group aims to develop a online game store for JavaScript ga
 <!--- ![schematics](doc/schematics.png) --->
 
 #### 3.2 Development Technologies
-* HTML, CSS, Javascript
-* Python 3.6
-* Django framework
+* Languages: HTML, CSS, Javascript, Python, SQL
+* Web framework: Django
 * Javascript library: jQuery 
 * CSS library: Bootstrap
-* PostgreSQL
+* Database system: MySQL/PostgreSQL
+* Testing: Python built-in "unittest"/django.test
+* Deployment: Heroku
 
 #### 3.3 Models
 
