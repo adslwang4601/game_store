@@ -115,4 +115,20 @@ The schedule is roughly designed. The practical and detailed timeline probably c
 	
 ### 6. Risk Analysis
 
+#### Security problems
+1. Collecting relevant materials, such as some related worth learning project involving security issues handling.
+2. Discussing and analyzing possible security flaws related to this project, e.g. problems with authorization and authentication.
+3. Researching possible solutions and trying to implement them.  
 
+#### Crash
+After a function is initially implemented：
+1. Considering both normal and extreme conditions. 
+2. Testing the project under different representative cases. 
+3. If a crash occurs, checking the reason for that (logical,etc.).
+4. Trying to find out possible solutions.
+
+#### Failure of deployment at the final phase 
+1. Doing the initial Heroku deployment early (when an initial application is built).
+2. Deploying the project when debugging during implementation phase.
+3. Tracking Heroku resource usage, and notice not to run out of limited free resources each month. 
+4. To save the Heroku resources, developing and testing the project first locally
