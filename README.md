@@ -58,6 +58,10 @@ In this project, the group aims to develop a online game store for JavaScript ga
 #### 3.4 Views
 
 #### 3.5 Testing
+An official documentation about testing a web application recommends writing tests with the built-in "unittest" module in Python stardard library. But it still involves some other ways such as django.test.runner.DiscoverRunner.
+
+The detailed information and tutorials can be found here:
+[Testing in Django](https://docs.djangoproject.com/en/1.11/topics/testing/)
 
 ### 4. Steps and Schedule
 
@@ -74,7 +78,7 @@ In this project, the group aims to develop a online game store for JavaScript ga
 * Final submission (DL: 19.2.2018 midnight)
 * Project demonstration
 
-Some steps are possible to be interactive. During the implementation phase (Step 2-6), appropriate testing will be done after finishing each step.
+Some steps are possible to be interactive. During the implementation phase (Step 2-6), appropriate testing will be done after finishing each function.
 
 #### 4.2 Schedule
 * 16 Dec-21 Dec: Researching the topic, Collecting materials and Making the project plan.
