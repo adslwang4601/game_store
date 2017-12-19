@@ -1,4 +1,4 @@
-Project Plan
+﻿Project Plan
 -----------------------
 
 ### 1. Team
@@ -54,8 +54,29 @@ In this project, the group aims to develop a online game store for JavaScript ga
 * Deployment: Heroku
 
 #### 3.3 Models
-
+##### **3.3.1 Game**
+- publisher - user foreign key
+- title
+- description
+- category
+- price
+- image
+##### **3.3.2 Category**
+- id
+- name
+##### **3.3.3 Profile**
+- user
+- ownedGames
+##### **...**
 #### 3.4 Views
+- Profile related
+_log in , log out, sign up, list purchased games, buy/play game_
+- Developer related
+_list developer games, list sale statistics, add/delete/modify game from own inventory_
+- SavedGame related
+_save game and load game_
+- Extra features related
+3rd party login, RESTful API, Own game  
 
 #### 3.5 Testing
 An official documentation about testing a web application recommends writing tests with the built-in "unittest" module in Python stardard library. But it still involves some other ways such as django.test.runner.DiscoverRunner.
