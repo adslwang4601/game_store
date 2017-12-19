@@ -55,8 +55,8 @@ In this project, the group aims to develop a online game store for JavaScript ga
 
 #### 3.3 Models
 ##### **3.3.1 Game**
-- publisher - user foreign key
-- title
+- publisher - user foreign key  
+- title  
 - description
 - category
 - price
@@ -71,9 +71,9 @@ In this project, the group aims to develop a online game store for JavaScript ga
 
 #### 3.4 Views
 - Profile related
-_log in , log out, sign up, list purchased games, buy/play game_
+_log in , log out, sign up, list purchased games, buy/play game_  
 - Developer related
-_list developer games, list sale statistics, add/delete/modify game from own inventory_
+_list developer games, list sale statistics, add/delete/modify game from own inventory_  
 - SavedGame related
 _save game and load game_
 - Extra features related
