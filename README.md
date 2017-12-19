@@ -67,7 +67,8 @@ In this project, the group aims to develop a online game store for JavaScript ga
 ##### **3.3.3 Profile**
 - user
 - ownedGames
-##### **...**
+##### **...**  
+
 #### 3.4 Views
 - Profile related
 _log in , log out, sign up, list purchased games, buy/play game_
@@ -76,7 +77,7 @@ _list developer games, list sale statistics, add/delete/modify game from own inv
 - SavedGame related
 _save game and load game_
 - Extra features related
-3rd party login, RESTful API, Own game  
+_3rd party login, RESTful API, Own game_
 
 #### 3.5 Testing
 An official documentation about testing a web application recommends writing tests with the built-in "unittest" module in Python stardard library. But it still involves some other ways such as django.test.runner.DiscoverRunner.
