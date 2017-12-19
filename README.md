@@ -50,7 +50,6 @@ In this project, the group aims to develop a online game store for JavaScript ga
 
 * Social media sharing 
 	- Share games in some social media sites. The shared contents include: a description and an image.
-<!--- ![schematics](doc/schematics.png) --->
 
 #### 3.2 Development Technologies
 * Languages: HTML, CSS, Javascript, Python, SQL
