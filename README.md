@@ -22,26 +22,34 @@ In this project, the group aims to develop a online game store for JavaScript ga
 
 * Basic player functionalities
 	- Buy games
-	- Play games only if purchased
+	- Play games only if have purchased them
 	- Searching games
-	- Seeing a list of purchased games
-	- Seeing top scores for each game
+	- See a list of purchased games
+	- See top scores for each game
 
 
 * Basic develop functionalities
 	- Basic game inventory
-	-  Managing their own game(s) (add/remove/modify) and set price(s) for the game(s) in their own inventory
-	-  Seeing sale statistics
+	-  Manage their own game(s) (add/remove/modify) and set price(s) for the game(s) in their own inventory
+	-  See sale statistics
 
 
 * Game/service interaction
 	- Messages are exchanged between game and the game service with **window.postMessage**.
-	- From the game to the service: Informing a new score (then the score is recorded), Saving the sent game state, Requesting a game state previously saved, Settings telling game specific configuration.
-	- From the service to the game: Loading a saved game state, Informing error information.
+	- From the game to the service: Inform a new score (then the score is recorded).
+	- From the service to the game: Inform error information.
 
 
 ##### Advanced Features
+* Save/load and resolution feature
+	- From the game to the service: Save the sent game state, Request a game state previously saved, Settings telling game specific configuration(resolution).
+	- From the service to the game: Load a saved game state.
 
+* Own game
+	- Design a simple JavaScript game communicating with service.
+
+* Social media sharing 
+	- Share games in some social media sites. The shared contents include: a description and an image.
 <!--- ![schematics](doc/schematics.png) --->
 
 #### 3.2 Development Technologies
@@ -49,7 +57,7 @@ In this project, the group aims to develop a online game store for JavaScript ga
 * Web framework: Django
 * Javascript library: jQuery 
 * CSS library: Bootstrap
-* Database system: MySQL/PostgreSQL
+* Database system: SQLite/MySQL/PostgreSQL
 * Testing: Python built-in "unittest"/django.test
 * Deployment: Heroku
 
@@ -94,17 +102,16 @@ The detailed information and tutorials can be found here:
 
 1. Planning (DL: 21.12.2017 midnight)
 2. Implementing the function Authentication
-3. Starting HTML and CSS coding (It will continue until the project is coming to an end) 
-4. Constructing models
-5. Hooking up views
-6. Making templates
-7. Game/service interaction
-8. Testing the roughly finished project locally
-9. Deploying the finished project to Heroku
-10. Final submission (DL: 19.2.2018 midnight)
-11. Project demonstration
+3. Constructing models
+4. Hooking up views
+5. Making templates
+6. Game/service interaction
+7. Testing the roughly finished project locally
+8. Deploying the finished project to Heroku
+9. Final submission (DL: 19.2.2018 midnight)
+10. Project demonstration
 
-Some steps are possible to be interactive. During the implementation phase (Step 2-7), appropriate testing will be done after finishing each function.
+Some steps are interactive. During the implementation phase (Step 2-6), appropriate testing will be done after finishing each function.
 
 #### 4.2 Schedule
 * 16 Dec-21 Dec: Researching the topic, Collecting materials and Making the project plan.
