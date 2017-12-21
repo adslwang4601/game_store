@@ -62,13 +62,13 @@ In this project, the group aims to develop a online game store for JavaScript ga
 
 #### 3.3 Models  
 
-##### **3.3.1 Game**
-- publisher - user foreign key  
-- title  
-- description
-- category
-- price
-- image
+* 3.3.1 Game  
+    - publisher - user foreign key  
+    - title  
+    - description
+    - category
+    - price
+    - image
 
 
 ##### **3.3.2 Category**
