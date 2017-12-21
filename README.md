@@ -18,10 +18,7 @@ In this project, the group aims to develop a online game store for JavaScript ga
 ##### Basic Features
 * Authentication (as a player or a developer)
 	- Login, Logout, Register, Email validation
-<<<<<<< HEAD
 	- How to implement: there are some ways to realize authentication. For example, using django.contrib.auth or the package Django-Registration-Redux. For email validation: django.core.mail. An official documentation realated to authentication: [User authentication in Django](https://docs.djangoproject.com/en/1.11/topics/auth/) 
-=======
->>>>>>> ee99ffd60f8a487576856fdbed483f65b6872e2c
 
 * Basic player functionalities 
 	- Buy games
@@ -53,12 +50,8 @@ In this project, the group aims to develop a online game store for JavaScript ga
 
 * Social media sharing 
 	- Share games in some social media sites. The shared contents include: a description and an image.
-<<<<<<< HEAD
 	- How to implement: using the package django-social-share
 	
-=======
-
->>>>>>> ee99ffd60f8a487576856fdbed483f65b6872e2c
 #### 3.2 Development Technologies
 * Languages: HTML, CSS, Javascript, Python, SQL
 * Web framework: Django
