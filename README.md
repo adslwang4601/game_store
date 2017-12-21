@@ -99,8 +99,9 @@ In this project, the group aims to develop a online game store for JavaScript ga
 
 
 #### 3.4 Views
+
 * Player related  
-_list purchased games, buy/play game, high scores_ 
+_list purchased games, buy/play game, high scores, social media sharing_
 
 * Developer related  
 _list developer games, list sale statistics, add/delete/modify game from own inventory_  
