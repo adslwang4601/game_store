@@ -88,7 +88,7 @@ In this project, the group aims to develop a online game store for JavaScript ga
 * GameSale
     - buyer
     - game
-    - date
+    - date  
 
 * Messages(used to interact with  game/service) 
     - score
