@@ -28,7 +28,7 @@ In this project, the group aims to develop a online game store for JavaScript ga
 	- See top scores for each game
 	- How to implement: django.contrib.auth can be used (user group: players)
 
-* Basic developer functionalities (user group: developer)
+* Basic developer functionalities 
 	- Basic game inventory
 	-  Manage their own game(s) (add/remove/modify) and set price(s) for the game(s) in their own inventory
 	-  See sale statistics
@@ -180,6 +180,7 @@ The schedule is roughly designed. The practical and detailed timeline probably c
 
 #### Security problems
 The security problems include problems with authorization and authentication, the risk of users tampering with data coming back from the payment service or possibility of user doing script injections to items shown to other users, etc.
+
 How to handle:
 1. Collecting relevant materials, such as some related worth learning project involving security issues handling.
 2. Discussing and analyzing possible security flaws related to this project.
