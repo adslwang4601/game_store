@@ -3,7 +3,7 @@
 
 ### 1. Team
 
-* 999999 Christian Addy
+* 661588 Christian Addy
 * 599540 Qiang Huang
 * 601098 Qianqian Qin
 
@@ -39,8 +39,6 @@ In this project, the group aims to develop a online game store for JavaScript ga
 	- From the game to the service: Inform a new score (then the score is recorded).
 	- From the service to the game: Inform error information.
 
-* Payment Service
-	- Documentation and usage examples: [Simple Payments](http://payments.webcourse.niksula.hut.fi/)
 
 ##### Advanced Features
 * Save/load and resolution feature
