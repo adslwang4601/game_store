@@ -111,8 +111,6 @@ _log in , log out, sign up_
 * SavedGame related  
 _save game and load game_
 
-* Extra features related  
-_3rd party login, RESTful API, Own game_
 
 #### 3.5 Testing
 An official documentation about testing a web application recommends writing tests with the built-in "unittest" module in Python stardard library. But it still involves some other ways such as django.test.runner.DiscoverRunner.
