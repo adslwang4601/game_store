@@ -18,22 +18,21 @@ In this project, the group aims to develop a online game store for JavaScript ga
 ##### Basic Features
 * Authentication (as a player or a developer)
 	- Login, Logout, Register, Email validation
-	- There are some ways to realize authentication. For example, using django.contrib.auth or the package Django-Registration-Redux. For email validation: django.core.mail. An official documentation realated to authentication: [User authentication in Django](https://docs.djangoproject.com/en/1.11/topics/auth/) 
+	- How to implement: there are some ways to realize authentication. For example, using django.contrib.auth or the package Django-Registration-Redux. For email validation: django.core.mail. An official documentation realated to authentication: [User authentication in Django](https://docs.djangoproject.com/en/1.11/topics/auth/) 
 
-
-* Basic player functionalities
+* Basic player functionalities 
 	- Buy games
 	- Play games only if have purchased them
 	- Searching games(in essence is a query to the games database)
 	- See a list of purchased games
 	- See top scores for each game
+	- How to implement: django.contrib.auth can be used (user group: player)
 
-
-* Basic develop functionalities
+* Basic developer functionalities (user group: developer)
 	- Basic game inventory
 	-  Manage their own game(s) (add/remove/modify) and set price(s) for the game(s) in their own inventory
 	-  See sale statistics
-
+	- How to implement: django.contrib.auth can be used (user group:developer)
 
 * Game/service interaction
 	- Messages are exchanged between game and the game service with **window.postMessage**.
@@ -53,7 +52,7 @@ In this project, the group aims to develop a online game store for JavaScript ga
 
 * Social media sharing 
 	- Share games in some social media sites. The shared contents include: a description and an image.
-	- can use the package django-social-share
+	- How to implement: using the package django-social-share
 	
 #### 3.2 Development Technologies
 * Languages: HTML, CSS, Javascript, Python, SQL
@@ -118,6 +117,13 @@ An official documentation about testing a web application recommends writing tes
 
 The detailed information and tutorials can be found here:
 [Testing in Django](https://docs.djangoproject.com/en/1.11/topics/testing/)
+
+### 3.6 Priorities
+The priorities of the project: 1. mandatory requirements  2. advanced features.
+
+First we will implement the authentication requirement for the game. Once authentication is completed, we will add basic player and developer functionalities. After that we can start to look at the game-service interaction. We will also consider adding some features simultaneously. For example, basic player functionalities and payment functionality should be considered almost at the same time. After the mandatory requirements are met, we will try to realize the advanced features we decided to added.
+
+While implementing these different features, we will constantly check our quality of work. The written code will be commented by each member to prevent any miscommunication. In addition testing will take place at the same time as functionalities are implemented.
 
 ### 4. Steps and Schedule
 
