@@ -62,7 +62,7 @@ In this project, the group aims to develop a online game store for JavaScript ga
 
 #### 3.3 Models  
 
-* 3.3.1 Game  
+* Game  
     - publisher - user foreign key  
     - title  
     - description
@@ -71,46 +71,46 @@ In this project, the group aims to develop a online game store for JavaScript ga
     - image
 
 
-##### **3.3.2 Category**
-- id
-- name
+* Category
+    - id
+    - name
 
-##### **3.3.3 Profile**
-- user
-- ownedGames
+* Profile
+    - user
+    - ownedGames
 
-##### **3.3.4  Score**
-- game
-- player 
-- score
-- date
+* Score
+    - game
+    - player 
+    - score
+    - date
+    - 
+* GameSale
+    - buyer
+    - game
+    - date
 
-##### **3.3.5 GameSale**
-- buyer
-- game
-- date
-
-##### **3.3.6 Messages**  (used to interact with  game/service) 
-- score
-- save
-- error
-- setting
+* Messages(used to interact with  game/service) 
+    - score
+    - save
+    - error
+    - setting
 
 
 #### 3.4 Views
-- Player related  
+* Player related  
 _list purchased games, buy/play game, high scores_ 
 
-- Developer related  
+* Developer related  
 _list developer games, list sale statistics, add/delete/modify game from own inventory_  
 
-- authentication related  
+* authentication related  
 _log in , log out, sign up_
 
-- SavedGame related  
+* SavedGame related  
 _save game and load game_
 
-- Extra features related  
+* Extra features related  
 _3rd party login, RESTful API, Own game_
 
 #### 3.5 Testing
