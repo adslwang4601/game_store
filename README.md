@@ -3,28 +3,27 @@
 
 ### 1. Team
 
-* 999999 Christian Addy
-* 999998 Qiang Huang
+* 999999 Peter Venkman
+* 999998 Ray Stantz
 * 601098 Qianqian Qin
 
 
 ### 2. Goal
 
-In this project, the group aims to develop a online game store for JavaScript games. The users of this web application include players and developers. Games can be added and sold by developers, and then can be purchased and played online by players. The game will be added using an URL to an HTML file that contains all assets and JavaScript links to JavaScript files. The application will be fully functional and fully tested.
+In this project, the group aims to develop a online game store for JavaScript games. The users of this web application include players and developers. Games can be added and sold by developers, and then can be purchased and played online by players. The application will be fully functional and fully tested.
 
-### 3. Application Design
+### 3. Application Functionalities
 
 #### 3.1 Features
 ##### Basic Features
 * Authentication (as a player or a developer)
 	- Login, Logout, Register, Email validation
-	- There are some ways to realize authentication. For example, using django.contrib.auth or the package Django-Registration-Redux. For email validation: django.core.mail. An official documentation realated to authentication: [User authentication in Django](https://docs.djangoproject.com/en/1.11/topics/auth/) 
 
 
 * Basic player functionalities
 	- Buy games
 	- Play games only if have purchased them
-	- Searching games(in essence is a query to the games database)
+	- Searching games
 	- See a list of purchased games
 	- See top scores for each game
 
@@ -40,8 +39,6 @@ In this project, the group aims to develop a online game store for JavaScript ga
 	- From the game to the service: Inform a new score (then the score is recorded).
 	- From the service to the game: Inform error information.
 
-* Payment Service
-	- Documentation and usage examples: [Simple Payments](http://payments.webcourse.niksula.hut.fi/)
 
 ##### Advanced Features
 * Save/load and resolution feature
@@ -53,8 +50,7 @@ In this project, the group aims to develop a online game store for JavaScript ga
 
 * Social media sharing 
 	- Share games in some social media sites. The shared contents include: a description and an image.
-	- can use the package django-social-share
-	
+
 #### 3.2 Development Technologies
 * Languages: HTML, CSS, Javascript, Python, SQL
 * Web framework: Django
@@ -64,10 +60,8 @@ In this project, the group aims to develop a online game store for JavaScript ga
 * Testing: Python built-in "unittest"/django.test
 * Deployment: Heroku
 
-#### 3.3 Models
+#### 3.3 Models  
 
-##### 3.3.1 User 
-Django User model: django.contrib.auth.models.User
 ##### **3.3.1 Game**
 - publisher - user foreign key  
 - title  
@@ -96,7 +90,7 @@ Django User model: django.contrib.auth.models.User
 - game
 - date
 
-##### **3.3.6 Messages**  used to interact with  game/service  
+##### **3.3.6 Messages**  (used to interact with  game/service) 
 - score
 - save
 - error
@@ -104,13 +98,19 @@ Django User model: django.contrib.auth.models.User
 
 
 #### 3.4 Views
-- Profile related
-_log in , log out, sign up, list purchased games, buy/play game_  
-- Developer related
+- Player related  
+_list purchased games, buy/play game, high scores_ 
+
+- Developer related  
 _list developer games, list sale statistics, add/delete/modify game from own inventory_  
-- SavedGame related
+
+- authentication related  
+_log in , log out, sign up_
+
+- SavedGame related  
 _save game and load game_
-- Extra features related
+
+- Extra features related  
 _3rd party login, RESTful API, Own game_
 
 #### 3.5 Testing
@@ -171,15 +171,19 @@ The schedule is roughly designed. The practical and detailed timeline probably c
 ### 6. Risk Analysis
 
 #### Security problems
-The security problems include problems with authorization and authentication, the risk of users tampering with data coming back from the payment service or possibility of user doing script injections to items shown to other users, etc.
-How to handle:
 1. Collecting relevant materials, such as some related worth learning project involving security issues handling.
-2. Discussing and analyzing possible security flaws related to this project.
+2. Discussing and analyzing possible security flaws related to this project, e.g. problems with authorization and authentication.
 3. Researching possible solutions and trying to implement them.  
 
+#### Crash
+After a function is initially implemented：
+1. Considering both normal and extreme conditions. 
+2. Testing the project under different representative cases. 
+3. If a crash occurs, checking the reason for that (logical,etc.).
+4. Trying to find out possible solutions.
+
 #### Failure of deployment at the final phase 
-How to handle:
 1. Doing the initial Heroku deployment early (when an initial application is built).
 2. Deploying the project when debugging during implementation phase.
 3. Tracking Heroku resource usage, and notice not to run out of limited free resources each month. 
-4. To save the Heroku resources, developing and testing the project first locally.
+4. To save the Heroku resources, developing and testing the project first locally
