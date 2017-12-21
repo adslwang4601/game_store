@@ -53,7 +53,7 @@ In this project, the group aims to develop a online game store for JavaScript ga
 
 * Social media sharing 
 	- Share games in some social media sites. The shared contents include: a description and an image.
-	- Using the package django-social-share
+	- can use the package django-social-share
 	
 #### 3.2 Development Technologies
 * Languages: HTML, CSS, Javascript, Python, SQL
@@ -76,6 +76,7 @@ Django User model: django.contrib.auth.models.User
 - price
 - image
 
+
 ##### **3.3.2 Category**
 - id
 - name
@@ -84,7 +85,23 @@ Django User model: django.contrib.auth.models.User
 - user
 - ownedGames
 
-##### **...**  
+##### **3.3.4  Score**
+- game
+- player 
+- score
+- date
+
+##### **3.3.5 GameSale**
+- buyer
+- game
+- date
+
+##### **3.3.6 Messages**  used to interact with  game/service  
+- score
+- save
+- error
+- setting
+
 
 #### 3.4 Views
 - Profile related
