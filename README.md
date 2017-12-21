@@ -3,14 +3,14 @@
 
 ### 1. Team
 
-* 999999 Peter Venkman
+* 999999 Christian Addy
 * 599540 Qiang Huang
 * 601098 Qianqian Qin
 
 
 ### 2. Goal
 
-In this project, the group aims to develop a online game store for JavaScript games. The users of this web application include players and developers. Games can be added and sold by developers, and then can be purchased and played online by players. The application will be fully functional and fully tested.
+In this project, the group aims to develop a online game store for JavaScript games. The users of this web application include players and developers. Games can be added and sold by developers, and then can be purchased and played online by players. The game will be added by game developers using an URL to an HTML file that contains all assets and JavaScript links to JavaScript files.The application will be fully functional and fully tested.
 
 ### 3. Application Functionalities
 
@@ -26,13 +26,13 @@ In this project, the group aims to develop a online game store for JavaScript ga
 	- Searching games
 	- See a list of purchased games
 	- See top scores for each game
-	- How to implement: django.contrib.auth can be used (user group: player)
+	- How to implement: django.contrib.auth can be used (user group: players)
 
 * Basic developer functionalities (user group: developer)
 	- Basic game inventory
 	-  Manage their own game(s) (add/remove/modify) and set price(s) for the game(s) in their own inventory
 	-  See sale statistics
-	- How to implement: django.contrib.auth can be used (user group:developer)
+	- How to implement: django.contrib.auth can be used (user group:developers)
 
 * Game/service interaction
 	- Messages are exchanged between game and the game service with **window.postMessage**.
@@ -121,7 +121,7 @@ The detailed information and tutorials can be found here:
 [Testing in Django](https://docs.djangoproject.com/en/1.11/topics/testing/)
 
 ### 3.6 Priorities
-The priorities of the project: 1. mandatory requirements  2. advanced features.
+The priorities of the project: 1. mandatory requirements   2. advanced features.
 
 First we will implement the authentication requirement for the game. Once authentication is completed, we will add basic player and developer functionalities. After that we can start to look at the game-service interaction. We will also consider adding some features simultaneously. For example, basic player functionalities and payment functionality should be considered almost at the same time. After the mandatory requirements are met, we will try to realize the advanced features we decided to added.
 
@@ -179,16 +179,11 @@ The schedule is roughly designed. The practical and detailed timeline probably c
 ### 6. Risk Analysis
 
 #### Security problems
+The security problems include problems with authorization and authentication, the risk of users tampering with data coming back from the payment service or possibility of user doing script injections to items shown to other users, etc.
+How to handle:
 1. Collecting relevant materials, such as some related worth learning project involving security issues handling.
-2. Discussing and analyzing possible security flaws related to this project, e.g. problems with authorization and authentication.
+2. Discussing and analyzing possible security flaws related to this project.
 3. Researching possible solutions and trying to implement them.  
-
-#### Crash
-After a function is initially implemented：
-1. Considering both normal and extreme conditions. 
-2. Testing the project under different representative cases. 
-3. If a crash occurs, checking the reason for that (logical,etc.).
-4. Trying to find out possible solutions.
 
 #### Failure of deployment at the final phase 
 1. Doing the initial Heroku deployment early (when an initial application is built).
