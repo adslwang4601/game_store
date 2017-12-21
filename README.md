@@ -186,6 +186,7 @@ How to handle:
 3. Researching possible solutions and trying to implement them.  
 
 #### Failure of deployment at the final phase 
+How to handle:
 1. Doing the initial Heroku deployment early (when an initial application is built).
 2. Deploying the project when debugging during implementation phase.
 3. Tracking Heroku resource usage, and notice not to run out of limited free resources each month. 
