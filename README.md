@@ -69,6 +69,7 @@ In this project, the group aims to develop a online game store for JavaScript ga
 - price
 - image
 
+
 ##### **3.3.2 Category**
 - id
 - name
@@ -77,7 +78,23 @@ In this project, the group aims to develop a online game store for JavaScript ga
 - user
 - ownedGames
 
-##### **...**  
+##### **3.3.4  Score**
+- game
+- player 
+- score
+- date
+
+##### **3.3.5 GameSale**
+- buyer
+- game
+- date
+
+##### **3.3.6 Messages**  used to interact with  game/service  
+- score
+- save
+- error
+- setting
+
 
 #### 3.4 Views
 - Profile related
