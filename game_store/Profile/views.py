@@ -39,7 +39,7 @@ def register(request):
         if user_form.is_valid():
             # Create a new user object but avoid saving it yet
             new_user = user_form.save(commit=False)
-            new_user.is_active= False
+            new_user.is_active = False
             # Set the chosen password
             new_user.set_password(user_form.cleaned_data['password1'])
             # Save the User object
@@ -51,13 +51,15 @@ def register(request):
             # activation
             current_site = get_current_site(request)
             mail_subject = 'Activate your blog account.'
-            if  user_form.cleaned_data['applyAsDeveloper ']:
-                devs = Group.objects.get(name='developers')
-                devs.user_set.add(user_profile.user)
-
-            else:
-                players =  Group.objects.get(name='players')
-                players.user_set.add(user_profile.user)
+            # if user_form.cleaned_data['applyAsDeveloper']:
+            #     devs = Group.objects.get_or_create(name='developers')
+            #     # user_profile.user.groups.add(devs)
+            #     devs.user_set.add(user_profile.user)
+            #
+            # else:
+            #     players = Group.objects.get_or_create(name='players')
+            #     # user_profile.user.groups.add(players)
+            #     players.user_set.add(user_profile.user)
 
             return render(request,
                           'Profile/register_done.html',
