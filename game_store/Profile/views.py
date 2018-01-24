@@ -18,8 +18,8 @@ def user_login(request):
         # messages.warning(request, "You are already logged in.")
         return HttpResponseRedirect(redirect_to=reverse_lazy('dashboard', 'Store.urls'))
     else:
-        return HttpResponseRedirect(redirect_to=reverse_lazy('dashboard', 'Store.urls'))
-        # return login(request, template_name='Profile/lo.html')
+        # return HttpResponseRedirect(redirect_to=reverse_lazy('dashboard', 'Store.urls'))
+        return login(request, template_name='Profile/log_in.html')
     # elif request.method == 'POST':
     #     form = LoginForm(request.POST)
     #     if form.is_valid():
