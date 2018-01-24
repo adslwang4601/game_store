@@ -26,12 +26,14 @@ def user_login(request):
             cd = form.cleaned_data
             # returns a User object if the credentials are valid for a backend
             user = authenticate(username=cd['username'], password=cd['password'])
+            # return HttpResponse("Here's the text of the Web page.")
             if user is not None:
-                # return HttpResponse("Here's the text of the Web page.")
-                if  user.is_active:
+            #     return HttpResponse("Here's the text of the Web page.")
+                if user.is_active:
                     login(request, user)
                     return render(request, 'game/dashboard.html')
-
+                else:
+                    return HttpResponse('Disabled account')
     else:
         form = LoginForm()
     return render(request, 'Profile/log_in.html', {'form': form})
@@ -44,7 +46,7 @@ def register(request):
         if user_form.is_valid():
             # Create a new user object but avoid saving it yet
             new_user = user_form.save(commit=False)
-            new_user.is_active = False
+            new_user.is_active = True
             # Set the chosen password
             new_user.set_password(user_form.cleaned_data['password1'])
             # Save the User object
@@ -53,7 +55,7 @@ def register(request):
             user_profile = User_Profile.objects.create(user=new_user)
             user_profile.save()
 
-            # activation
+            # activationrue
             current_site = get_current_site(request)
             mail_subject = 'Activate your blog account.'
 
