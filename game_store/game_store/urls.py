@@ -16,12 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include, url
+from django.conf import settings
+from django.conf.urls.static import static
 # import sys
 # sys.path.insert(0, '/Users/adslwang4601/Desktop/course/game_store/game_store/Store')
 # from views import dashboard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'', include('Store.urls')),
-    path('/account', include('Profile.urls')),
+    path('', include('Store.urls')),
+    path('Profile/', include('Profile.urls')),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                        document_root=settings.MEDIA_ROOT)

@@ -7,16 +7,16 @@ from django.contrib.auth.forms import UserCreationForm
 
 class LoginForm(forms.Form):
     username = forms.CharField()
-    password = forms.CharField(label=_("Password"), widget=forms.PasswordInput)
+    password = forms.CharField(label=("Password"), widget=forms.PasswordInput)
 
 
 class RegistrationForm(UserCreationForm):
-    password1 = forms.CharField(label=_("Password"),
+    password1 = forms.CharField(label=("Password"),
                                 widget=forms.PasswordInput)
-    password2 = forms.CharField(label=_("Password confirmation"),
+    password2 = forms.CharField(label=("Password confirmation"),
                                 widget=forms.PasswordInput,
-                                help_text=_("Enter the same password as above, for verification."))
-    applyAsDeveloper = forms.NullBooleanField(label="Apply as Developer")
+                                help_text=("Enter the same password as above, for verification."))
+    applyAsDeveloper = forms.NullBooleanField(label="Apply as Developer", widget=forms.CheckboxInput())
 
     class Meta:
         model = User
@@ -48,5 +48,5 @@ class UserEditForm(forms.ModelForm):
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = User_Profile
-        fields = ['date_of_birth ', 'photo', 'city', 'country']
+        fields = ['date_of_birth', 'photo', 'city', 'country']
 
