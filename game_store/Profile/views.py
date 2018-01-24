@@ -16,7 +16,7 @@ from django.http import HttpResponse
 def user_login(request):
     if request.user.is_authenticated:
         # messages.warning(request, "You are already logged in.")
-        return HttpResponseRedirect(redirect_to=reverse_lazy('dashboard'))
+        return HttpResponseRedirect(redirect_to=reverse_lazy('dashboard', 'Store.urls'))
     else:
         return HttpResponseRedirect(redirect_to=reverse_lazy('dashboard', 'Store.urls'))
         # return login(request, template_name='Profile/lo.html')
