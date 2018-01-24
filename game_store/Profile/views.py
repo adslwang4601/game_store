@@ -16,24 +16,25 @@ from django.http import HttpResponse
 def user_login(request):
     if request.user.is_authenticated:
         # messages.warning(request, "You are already logged in.")
-        return HttpResponseRedirect(redirect_to=reverse_lazy('dashboard', 'Store.urls'))
-    else:
         # return HttpResponseRedirect(redirect_to=reverse_lazy('dashboard', 'Store.urls'))
-        return login(request, template_name='Profile/log_in.html')
-    # elif request.method == 'POST':
-    #     form = LoginForm(request.POST)
-    #     if form.is_valid():
-    #         cd = form.cleaned_data
-    #         # returns a User object if the credentials are valid for a backend
-    #         user = authenticate(username=cd['username'], password=cd['password'])
-    #         if user is not None:
-    #             if not user.is_active:
-    #                 login(request, user)
-    #                 return HttpResponse("Here's the text of the Web page.")
-                    # return HttpResponseRedirect(redirect_to=reverse_lazy('dashboard', 'Store.urls'))
+        return render(request, 'game/dashboard.html')
     # else:
-    #     form = LoginForm()
-    # return render(request, 'Profile/log_in.html', {'form': form})
+        # return login(request, template_name='Profile/log_in.html')
+    elif request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            # returns a User object if the credentials are valid for a backend
+            user = authenticate(username=cd['username'], password=cd['password'])
+            if user is not None:
+                # return HttpResponse("Here's the text of the Web page.")
+                if  user.is_active:
+                    login(request, user)
+                    return render(request, 'game/dashboard.html')
+
+    else:
+        form = LoginForm()
+    return render(request, 'Profile/log_in.html', {'form': form})
 
 
 def register(request):
