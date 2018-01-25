@@ -3,7 +3,7 @@ from Profile.models import User_Profile
 from django.contrib.auth.models import User
 from django.utils import timezone
 '''Model for categories'''
-class Category(models.Model):   
+class Category(models.Model):
     name = models.CharField(max_length=50, blank=False, unique=True)
 
     def __str__(self):
@@ -11,11 +11,11 @@ class Category(models.Model):
 
 ''' Model for game'''
 class Game(models.Model):
-'''    
+    '''
     Image sizes
     - icon:  48x48
     - image: 256x256
-'''
+    '''
     title = models.CharField(max_length=50, unique=True, blank=False)
     description = models.TextField()
     publisher = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
