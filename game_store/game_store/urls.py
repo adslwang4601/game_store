@@ -27,9 +27,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Store.urls')),
     path('Profile/', include('Profile.urls')),
+<<<<<<< HEAD
     path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
     views.activate, name='activate')
 
+=======
+    path('developers/', include('developers.urls')),
+    path('', include('players.urls')),
+>>>>>>> bf2c321de77aa1e2235e4817c848229cd2b65605
 ]
 
 

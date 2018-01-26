@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'developers',
+    'players',
+    'gameinfo',
 ]
 
 MIDDLEWARE = [
@@ -140,4 +143,7 @@ EMAIL_USE_TLS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+<<<<<<< HEAD
 
+=======
+>>>>>>> bf2c321de77aa1e2235e4817c848229cd2b65605
