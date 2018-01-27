@@ -17,10 +17,7 @@ class RegistrationForm(UserCreationForm):
                                 widget=forms.PasswordInput,
                                 help_text=("Enter the same password as above, for verification."))
     applyAsDeveloper = forms.NullBooleanField(label="Apply as Developer", required=False, widget=forms.CheckboxInput())
-<<<<<<< HEAD
-=======
     email = forms.EmailField(max_length=200, help_text='Required')
->>>>>>> 68a950c39ce0baf3536ced2bf2823cf50b7a8961
 
     class Meta:
         model = User

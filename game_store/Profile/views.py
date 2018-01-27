@@ -12,39 +12,16 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.conf.urls import include, url
 from django.http import HttpResponse
-<<<<<<< HEAD
-=======
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib.auth.models import Permission
 from django.contrib.auth.models import ContentType
->>>>>>> 68a950c39ce0baf3536ced2bf2823cf50b7a8961
 
 def user_login(request):
     if request.user.is_authenticated:
         # messages.warning(request, "You are already logged in.")
-<<<<<<< HEAD
-        return HttpResponseRedirect(redirect_to=reverse_lazy('dashboard', 'Store.urls'))
-    else:
-        return HttpResponseRedirect(redirect_to=reverse_lazy('dashboard', 'Store.urls'))
-        # return login(request, template_name='Profile/lo.html')
-    # elif request.method == 'POST':
-    #     form = LoginForm(request.POST)
-    #     if form.is_valid():
-    #         cd = form.cleaned_data
-    #         # returns a User object if the credentials are valid for a backend
-    #         user = authenticate(username=cd['username'], password=cd['password'])
-    #         if user is not None:
-    #             if not user.is_active:
-    #                 login(request, user)
-    #                 return HttpResponse("Here's the text of the Web page.")
-                    # return HttpResponseRedirect(redirect_to=reverse_lazy('dashboard', 'Store.urls'))
-    # else:
-    #     form = LoginForm()
-    # return render(request, 'Profile/log_in.html', {'form': form})
-=======
         # return HttpResponseRedirect(redirect_to=reverse_lazy('dashboard', 'Store.urls'))
         return render(request, 'game/dashboard.html')
     # else:
@@ -66,7 +43,6 @@ def user_login(request):
     else:
         form = LoginForm()
     return render(request, 'Profile/log_in.html', {'form': form})
->>>>>>> 68a950c39ce0baf3536ced2bf2823cf50b7a8961
 
 
 def register(request):
@@ -85,25 +61,6 @@ def register(request):
             user_profile = User_Profile.objects.create(user=new_user)
             user_profile.save()
 
-<<<<<<< HEAD
-            # activation
-            current_site = get_current_site(request)
-            mail_subject = 'Activate your blog account.'
-
-            if user_form.cleaned_data['applyAsDeveloper']:
-                devs, created = Group.objects.get_or_create(name='developers')
-                # user_profile.user.groups.add(devs)
-                devs.user_set.add(user_profile.user)
-
-            else:
-                players, created = Group.objects.get_or_create(name='players')
-                # user_profile.user.groups.add(players)
-                players.user_set.add(user_profile.user)
-
-            return render(request,
-                          'Profile/register_done.html',
-                          {'new_user': new_user})
-=======
 
 
             if user_form.cleaned_data['applyAsDeveloper']:
@@ -148,13 +105,10 @@ def register(request):
             # return render(request,
             #               'Profile/register_done.html',
             #               {'new_user': new_user})
->>>>>>> 68a950c39ce0baf3536ced2bf2823cf50b7a8961
     else:
         user_form = RegistrationForm()
     return render(request, 'Profile/register.html', {'form': user_form})
 
-<<<<<<< HEAD
-=======
 def activate(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -169,7 +123,6 @@ def activate(request, uidb64, token):
         return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
->>>>>>> 68a950c39ce0baf3536ced2bf2823cf50b7a8961
 
 def edit(request):
     # profile = Profile.objects.get(user=request.user)
@@ -200,8 +153,4 @@ def my_profile(request):
                                    data=request.POST,
                                    files=request.FILES)
     return render(request, 'Profile/user_profile.html', {'user_form': user_form,
-<<<<<<< HEAD
-                                                        'profile_form': profile_form})
-=======
                                                          'profile_form': profile_form})
->>>>>>> 68a950c39ce0baf3536ced2bf2823cf50b7a8961

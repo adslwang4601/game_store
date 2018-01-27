@@ -1,7 +1,4 @@
 from django.db import models
-<<<<<<< HEAD
-
-=======
 from Profile.models import User_Profile
 from django.contrib.auth.models import User
 from django.utils import timezone
@@ -48,5 +45,4 @@ class Game_Sale(models.Model):
     buyer = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
     game = models.ForeignKey(Game, on_delete=models.CASCADE, blank=False)
     date = models.DateTimeField(blank=False,default=timezone.now)
->>>>>>> 68a950c39ce0baf3536ced2bf2823cf50b7a8961
 # Create your models here.
