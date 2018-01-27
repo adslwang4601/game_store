@@ -18,17 +18,36 @@ from django.urls import path
 from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
+<<<<<<< HEAD
 # import sys
 # sys.path.insert(0, '/Users/adslwang4601/Desktop/course/game_store/game_store/Store')
 # from views import dashboard
+=======
+from Profile import views
+
+import sys
+sys.path.append("..")
+>>>>>>> 68a950c39ce0baf3536ced2bf2823cf50b7a8961
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Store.urls')),
+<<<<<<< HEAD
     path('profile/', include('Profile.urls')),
+=======
+    path('Profile/', include('Profile.urls')),
+    path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+    views.activate, name='activate'),
+    path('developers/', include('developers.urls')),
+    path('', include('players.urls')),
+>>>>>>> 68a950c39ce0baf3536ced2bf2823cf50b7a8961
 ]
 
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
+<<<<<<< HEAD
                         document_root=settings.MEDIA_ROOT)
+=======
+                        document_root=settings.MEDIA_ROOT)
+>>>>>>> 68a950c39ce0baf3536ced2bf2823cf50b7a8961

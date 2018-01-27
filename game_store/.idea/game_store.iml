@@ -7,7 +7,10 @@
         <option name="settingsModule" value="game_store/settings.py" />
         <option name="manageScript" value="$MODULE_DIR$/manage.py" />
         <option name="environment" value="&lt;map/&gt;" />
+<<<<<<< HEAD
         <option name="doNotUseTestRunner" value="false" />
+=======
+>>>>>>> 68a950c39ce0baf3536ced2bf2823cf50b7a8961
       </configuration>
     </facet>
   </component>

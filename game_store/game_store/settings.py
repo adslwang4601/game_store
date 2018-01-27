@@ -39,6 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
+=======
+    'developers',
+    'players',
+    'gameinfo',
+>>>>>>> 68a950c39ce0baf3536ced2bf2823cf50b7a8961
 ]
 
 MIDDLEWARE = [
@@ -133,10 +139,19 @@ STATICFILES_DIRS = (
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST = 'smtp.gmail.com'
+<<<<<<< HEAD
 EMAIL_HOST_USER = 'adslwang4605@gmail.com'
 EMAIL_HOST_PASSWORD = '*'
+=======
+EMAIL_HOST_USER = '416356186@gmail.com'
+EMAIL_HOST_PASSWORD = 'huangru'
+>>>>>>> 68a950c39ce0baf3536ced2bf2823cf50b7a8961
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 MEDIA_URL = '/media/'
+<<<<<<< HEAD
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+=======
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+>>>>>>> 68a950c39ce0baf3536ced2bf2823cf50b7a8961
