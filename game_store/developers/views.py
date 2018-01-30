@@ -10,4 +10,3 @@ def uploads(request,user_id)
     'games' : games_published
     }
     return render(request, 'game_store',uploads.html', context)
-    

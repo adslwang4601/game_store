@@ -18,14 +18,17 @@ from django.urls import path
 from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
-# import sys
-# sys.path.insert(0, '/Users/adslwang4601/Desktop/course/game_store/game_store/Store')
-# from views import dashboard
+from Profile import views
+
+import sys
+sys.path.append("..")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Store.urls')),
     path('Profile/', include('Profile.urls')),
+    path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+    views.activate, name='activate'),
     path('developers/', include('developers.urls')),
     path('', include('players.urls')),
 ]
