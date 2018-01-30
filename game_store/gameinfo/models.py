@@ -5,9 +5,13 @@ from django.utils import timezone
 '''Model for categories'''
 class Category(models.Model):
     name = models.CharField(max_length=50, blank=False, unique=True)
+    slug = models.SlugField(max_length=200, db_index=True, unique=True)
+
+    class Meta:
+        ordering = ('name')
 
     def __str__(self):
-        return str(self.name)
+        return self.name
 
 ''' Model for game'''
 class Game(models.Model):
@@ -20,7 +24,7 @@ class Game(models.Model):
     description = models.TextField()
     publisher = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,blank=False)
-    url = models.URLField(blank=False)
+    slug = models.SlugField(max_length=200, db_index=True, unique=True)
     price = models.DecimalField(max_digits=6, decimal_places=2, blank=False)
     icon = models.ImageField("Game icon", null=True, blank=True, upload_to="games/icons")
     image = models.ImageField("Game image", null=True, blank=True, upload_to="games/image")
