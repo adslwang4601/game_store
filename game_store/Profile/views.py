@@ -48,7 +48,6 @@ def user_login(request):
 def register(request):
     if request.method == 'POST':
         user_form = RegistrationForm(request.POST)
-
         if user_form.is_valid():
             # Create a new user object but avoid saving it yet
             new_user = user_form.save(commit=False)
@@ -67,14 +66,14 @@ def register(request):
                 devs_group, _ = Group.objects.get_or_create(name='developers')
                 devs_group.user_set.add(user_profile.user)
                 content_type = ContentType.objects.get(app_label='gamedata', model='game')
-                permission_developer, _ = Permission.objects.get_or_create(
+                permission_developer, created = Permission.objects.get_or_create(
                     codename='developer',
                     name='Developer',
                 )
                 user_profile.user.user_permissions.add(permission_developer)
 
             else:
-                players_group, _ = Group.objects.get_or_create(name='players')
+                players_group, created = Group.objects.get_or_create(name='players')
                 players_group.user_set.add(user_profile.user)
                 permission_players, _ = Permission.objects.get_or_create(
                     codename='players',

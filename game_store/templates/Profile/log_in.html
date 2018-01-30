@@ -24,4 +24,15 @@
         </form>
  <p><a href="{% url "password_reset" %}">Forgotten your password?</a></p>
  </div>
+
+{% load socialaccount %}
+<h1>Django Allauth Tutorial</h1>
+{% if user.is_authenticated %}
+<p>Welcome {{ user.username }} !!!</p>
+{% else %}
+<a class="btn btn-block btn-social btn-github"  href="{% provider_login_url 'github' %}">
+<i class="fa fa-github"></i>
+    Sign in with GitHub
+</a>
+{% endif %}
 {% endblock %}

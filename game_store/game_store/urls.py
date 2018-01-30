@@ -23,18 +23,19 @@ from Profile import views
 import sys
 sys.path.append("..")
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Store.urls')),
-    path('Profile/', include('Profile.urls')),
-<<<<<<< HEAD
-    path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-    views.activate, name='activate')
+    path(r'^cart/', include('cart.urls'), name='cart'),
+    path('Profile/', include('Profile.urls'), name='profile'),
+    path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', views.activate, name='activate'),
+    path('developers/', include('developers.urls'), name='developers'),
+    path('players/', include('players.urls'), name='players'),
+    path('accounts/', include('allauth.urls'), name='accounts'),
 
-=======
-    path('developers/', include('developers.urls')),
-    path('', include('players.urls')),
->>>>>>> bf2c321de77aa1e2235e4817c848229cd2b65605
+
 ]
 
 

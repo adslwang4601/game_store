@@ -1,6 +1,7 @@
 body{
     /*background-image: url("../images/background.jpg");*/
     background: #1b2838;
+    /*background: rgb(201, 76, 76);*/
     background-repeat: repeat;
 }
 
@@ -447,3 +448,7 @@ input.hidden {
 	border:2px solid #03b1ce ;}
 	.tital{ font-size:16px; font-weight:500;}
 	 .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}
+
+#message{
+    color: #FFFFFF
+}

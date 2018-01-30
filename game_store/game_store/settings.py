@@ -34,6 +34,7 @@ SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
+    'cart',
     'Profile',
     'Store',
     'django.contrib.admin',
@@ -189,4 +190,4 @@ SOCIALACCOUNT_PROVIDERS = \
 SOCIAL_AUTH_FACEBOOK_KEY = '1821936627839980'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET ='2a20f68c3dcc6c034926c33953793f61' #app key
 
-
+CART_SESSION_ID = 'cart'
