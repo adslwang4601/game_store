@@ -27,7 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = 'log_in'
+LOGIN_REDIRECT_URL = 'dashboard'
 
+SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,6 +45,14 @@ INSTALLED_APPS = [
     'developers',
     'players',
     'gameinfo',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.openid',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -67,10 +78,18 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 WSGI_APPLICATION = 'game_store.wsgi.application'
 
@@ -102,6 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+
 ]
 
 
@@ -137,13 +157,36 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = '416356186@gmail.com'
-EMAIL_HOST_PASSWORD = 'huangru'
+EMAIL_HOST_PASSWORD = '*'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-<<<<<<< HEAD
 
-=======
->>>>>>> bf2c321de77aa1e2235e4817c848229cd2b65605
+SOCIALACCOUNT_PROVIDERS = \
+    {'facebook':
+       {'METHOD': 'oauth2',
+        'SCOPE': ['email','public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time'],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': lambda request: 'kr_KR',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.11'}}
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1821936627839980'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET ='2a20f68c3dcc6c034926c33953793f61' #app key
+
+
