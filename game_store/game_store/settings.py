@@ -165,29 +165,4 @@ EMAIL_USE_TLS = True
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-SOCIALACCOUNT_PROVIDERS = \
-    {'facebook':
-       {'METHOD': 'oauth2',
-        'SCOPE': ['email','public_profile', 'user_friends'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'FIELDS': [
-            'id',
-            'email',
-            'name',
-            'first_name',
-            'last_name',
-            'verified',
-            'locale',
-            'timezone',
-            'link',
-            'gender',
-            'updated_time'],
-        'EXCHANGE_TOKEN': True,
-        'LOCALE_FUNC': lambda request: 'kr_KR',
-        'VERIFIED_EMAIL': False,
-        'VERSION': 'v2.11'}}
-
-SOCIAL_AUTH_FACEBOOK_KEY = '1821936627839980'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET ='2a20f68c3dcc6c034926c33953793f61' #app key
-
 CART_SESSION_ID = 'cart'

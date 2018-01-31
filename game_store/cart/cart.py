@@ -52,7 +52,7 @@ class Cart(object):
         # get the product objects and add them to the cart
         games = Game.objects.filter(id__in=game_ids)
         for game in games:
-            self.cart[str(game.id)]['game'] = game
+            self.cart[str(game.id)]['product'] = game
 
         for item in self.cart.values():
             item['price'] = Decimal(item['price'])

@@ -1,14 +1,19 @@
 from django.conf.urls import url
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 
 urlpatterns = [
-    path(r'^$', views.cart_detail, name='cart_detail'),
-    path(r'^add/(?P<product_id>\d+)/$',
+    url(r'^$', views.cart_detail, name='cart_detail'),
+    # re_path('add/(?P<product_id>d+)/', views.cart_add,
+    #         name='cart_add'),
+    # re_path('remove/(?P<product_id>d+)/', views.cart_remove,
+    #         name='cart_remove'),
+    url(r'^add/(?P<product_id>\d+)/$',
             views.cart_add,
             name='cart_add'),
-    path(r'^remove/(?P<product_id>\d+)/$',
+    url(r'^remove/(?P<product_id>\d+)/$',
             views.cart_remove,
             name='cart_remove'),
+
 ]
 

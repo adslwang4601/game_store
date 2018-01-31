@@ -5,7 +5,7 @@
 
 {% block content %}
     <h1>Your shopping cart</h1>
-    <table class="cart">
+    <table class="table ">
         <thead>
             <tr>
                 <th>Image</th>
@@ -22,12 +22,13 @@
             <tr>
                 <td>
                     <a href="{{ product.get_absolute_url }}">
-                       ![]({% if product.image %}{{ product.image.url }}{% else %}{% static )
+                       <img src="{{ product.image.url }}">
                     </a>
                 </td>
-                <td>{{ product.name }}</td>
+                <td>{% if product.name %}{{ product.name }}{% else %}asd{% endif %}</td>
+{#                <td>dadsada</td>#}
                 <td>{{ item.quantity }}</td>
-                <td><a href="{% url "cart:cart_remove" product.id %}">Remove</a></td>
+                <td><a href="{% url "cart_remove" product.id %}">Remove</a></td>
                 <td class="num">${{ item.price }}</td>
                 <td class="num">${{ item.total_price }}</td>
             </tr>
@@ -40,8 +41,10 @@
         </tr>
         </tbody>
     </table>
+
+
     <p class="text-right">
-        <a href="{% url "shop:product_list" %}" class="button light">Continue shopping</a>
+        <a href="{% url "product_list" %}" class="button light">Continue shopping</a>
         <a href="#" class="button">Checkout</a>
     </p>
 {% endblock %}
