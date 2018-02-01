@@ -17,6 +17,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib.auth.models import Permission
+from django.contrib.contenttypes.models import ContentType
 
 def user_login(request):
     if request.user.is_authenticated:
@@ -62,20 +63,24 @@ def register(request):
 
 
             if user_form.cleaned_data['applyAsDeveloper']:
-                devs_group, _ = Group.objects.get_or_create(name='developers')
+                devs_group, created = Group.objects.get_or_create(name='developers')
                 devs_group.user_set.add(user_profile.user)
+                content_type = ContentType.objects.get_for_model(User_Profile)
                 permission_developer, created = Permission.objects.get_or_create(
                     codename='developer',
                     name='Developer',
+                    content_type=content_type
                 )
                 user_profile.user.user_permissions.add(permission_developer)
 
             else:
                 players_group, created = Group.objects.get_or_create(name='players')
                 players_group.user_set.add(user_profile.user)
-                permission_players, _ = Permission.objects.get_or_create(
+                content_type = ContentType.objects.get_for_model(User_Profile)
+                permission_players, created = Permission.objects.get_or_create(
                     codename='players',
                     name='Players',
+                    content_type=content_type
                 )
                 user_profile.user.user_permissions.add(permission_players)
 
