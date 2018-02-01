@@ -5,7 +5,7 @@ sys.path.append('..')
 from django.http import HttpResponse
 from gameinfo.models import Game
 from .cart import Cart
-from .forms import CartAddProductForm
+from .forms import CartAddGameForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -24,25 +24,15 @@ def cart_detail(request):
 
 @login_required
 @require_POST
-def cart_add(request, product_id):
-    # if not request.is_ajax():
-    #     messages.error(request, "This view can be only accessed through ajax calls.")
-    #     return redirect("cart_detail'")
-    #
-    # jsondata = {'error': None}
-    #
-    # # if player has own this game, return error
-    # owned_games = request.user.profile._ownedGames.filter(id__exact=product_id)
-    # if owned_games.count() > 0:
-    #     jsondata['error'] = "You already own this game"
+def cart_add(request, game_id):
     cart = Cart(request)
-    product = get_object_or_404(Game, id=product_id)
-    form = CartAddProductForm(request.POST)
-    if form.is_valid():
-        cd = form.cleaned_data
-        cart.add(game=product,
-                quantity=cd['quantity'],
-                update_quantity=cd['update'])
+    game= get_object_or_404(Game, id=game_id)
+    cart.add(game=game)
+    cart.save()
+    # form = CartAddGameForm(request.POST)
+    # if form.is_valid():
+    #     cd = form.cleaned_data
+    #     cart.add(game=game)
     # return HttpResponse("Here's the text of the Web page.")
     return redirect('cart_detail')
     # return render(request, 'cart/detail.html', {'cart': cart})
@@ -50,52 +40,26 @@ def cart_add(request, product_id):
 
 @login_required
 @require_POST
-def cart_remove(request, product_id):
+def cart_remove(request, game_id):
     cart = Cart(request)
-    product = get_object_or_404(Game, id=product_id)
-    cart.remove(product)
+    game = get_object_or_404(Game, id=game_id)
+    cart.remove(game)
     return redirect('cart_detail')
-    # return render(request, 'cart/detail.html', {'cart': cart})
 
-
-# @login_required
-# def order_create(request):
-#     cart = Cart(request)
-#     if request.method == 'POST':
-#         form = OrderCreateForm(request.POST)
-#         if form.is_valid():
-#             order = form.save()
-#             for item in cart:
-#                 OrderItem.objects.create(order=order,
-#                     product=item['product'],
-#                     price=item['price'],
-#                     quantity=item['quantity'])
-#         cart.clear()
-#         return render(request,
-#                       'cart/created.html',
-#                       {'order': order})
-#     else:
-#         form = OrderCreateForm()
-#
-#     return render(request,
-#             'cart/create.html',
-#             {'cart': cart, 'form': form})
 
 def order_create(request):
     my_cart = Cart(request)
     if request.method == 'POST':
         game_ids = my_cart.cart.keys()
         gset = Game.objects.filter(id__in= game_ids)
-        for game_id, item in my_cart:
+        for game_id, item in zip(my_cart.cart.keys(), my_cart):
             if request.user.user_profile._ownedGames.filter(id__exact=game_id).count() > 0:
-                messages.error(request, "You already own the game %s. This item has been removed from the cart"
-                               % item['product'])
+                messages.error(request, "You already own the game %s. This item has been removed from the cart" % item['game'])
         # If somehow the cart is empty, deny the order creation and redirect the user to the cart.
         if len(my_cart) < 1:
             messages.warning(request, "The cart is empty!")
             return redirect('detail')
         order = Order.objects.create(_player=request.user.user_profile,
-                                     # _games=gset.set(),
                                      )
         order._games.set(gset.all())
         order.save()

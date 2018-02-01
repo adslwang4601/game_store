@@ -18,7 +18,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('product_list_by_category',
+        return reverse('game_list_by_category',
                        args=[self.slug])
 
 ''' Model for game'''
@@ -42,7 +42,7 @@ class Game(models.Model):
         return str(self.name)
 
     def get_absolute_url(self):
-        return reverse('product_detail',
+        return reverse('game_detail',
                        args=[self.id, self.slug])
 
 '''Game score'''

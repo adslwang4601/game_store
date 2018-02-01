@@ -14,18 +14,13 @@ class Cart(object):
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
 
-    def add(self, game, quantity=1, update_quantity=False):
+    def add(self, game):
         """
         Add a product to the cart or update its quantity.
         """
         game_id = str(game.id)
         if game_id not in self.cart:
-            self.cart[game_id] = {'quantity': 0,
-                                     'price': str(game.price)}
-        if update_quantity:
-            self.cart[game_id]['quantity'] = quantity
-        else:
-            self.cart[game_id]['quantity'] += quantity
+            self.cart[game_id] = {'price': str(game.price)}
         self.save()
 
     def save(self):
@@ -52,21 +47,21 @@ class Cart(object):
         # get the product objects and add them to the cart
         games = Game.objects.filter(id__in=game_ids)
         for game in games:
-            self.cart[str(game.id)]['product'] = game
+            self.cart[str(game.id)]['game'] = game
 
         for game_id, item in self.cart.items():
             item['price'] = Decimal(item['price'])
-            item['total_price'] = item['price'] * item['quantity']
-            yield game_id, item
+            yield item
 
     def __len__(self):
         """
         Count all items in the cart.
         """
-        return sum(item['quantity'] for item in self.cart.values())
+        return len(self.cart.keys())
+        # return sum(item['game'] for item in self.cart)
 
     def get_total_price(self):
-        return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
+        return sum(Decimal(item['price']) for item in self.cart.values())
 
     def clear(self):
         # remove cart from session

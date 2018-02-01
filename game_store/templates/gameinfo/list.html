@@ -14,7 +14,7 @@
         <h3>Categories</h3>
         <ul>
             <li {% if not category %}class="selected"{% endif %}>
-                <a href="{% url "product_list" %}">All</a>
+                <a href="{% url "game_list" %}">All</a>
             </li>
         {% for c in categories %}
             <li {% if category.slug == c.slug %}class="selected"{% endif %}>
@@ -24,15 +24,15 @@
         </ul>
     </div>
     <div id="main" class="product-list">
-        <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
-        {% for product in products %}
+        <h1>{% if category %}{{ category.name }}{% else %}games{% endif %}</h1>
+        {% for game in games %}
             <div class="item">
-                <a href="{{ product.get_absolute_url }}">
-                    <img src="{{ product.image.url }}">
+                <a href="{{ game.get_absolute_url }}">
+                    <img src="{{ game.image.url }}">
                 </a>
                 <p>
-                <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
-                    ${{ product.price }}
+                <a href="{{ game.get_absolute_url }}">{{ game.name }}</a><br>
+                    ${{ game.price }}
                 </p>
             </div>
         {% endfor %}

@@ -2,9 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from .models import Category, Game
 import sys
 sys.path.append('..')
-from cart.forms import CartAddProductForm
+from cart.forms import CartAddGameForm
 
-def product_list(request, category_slug=None):
+def game_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
     games = Game.objects.all()
@@ -15,17 +15,12 @@ def product_list(request, category_slug=None):
                   'gameinfo/list.html',
                   {'category': category,
                   'categories': categories,
-                  'products': games})
+                  'games': games})
 
-def product_detail(request, id, slug):
-    game = get_object_or_404(Game,
-                                id=id,
-                                slug=slug)
-    cart_product_form = CartAddProductForm()
-    return render(request,
-                  'gameinfo/detail.html',
-                  {'product': game,
-                   'cart_product_form': cart_product_form})
+def game_detail(request, id, slug):
+    game = get_object_or_404(Game, id=id, slug=slug)
+    cart_game_form = CartAddGameForm()
+    return render(request, 'gameinfo/detail.html', {'game': game, 'cart_game_form': cart_game_form})
 
 
 

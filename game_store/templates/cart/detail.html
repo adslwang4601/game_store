@@ -9,28 +9,25 @@
         <thead>
             <tr>
                 <th>Image</th>
-                <th>Product</th>
+                <th>Game</th>
                 <th>Quantity</th>
                 <th>Remove</th>
-                <th>Unit price</th>                
-                <th>Price</th>
+                <th>Unit price</th>
             </tr>
         </thead>
         <tbody>
-        {% for key, item in cart %}
-            {% with product=item.product %}
+        {% for item in cart %}
+            {% with game=item.game %}
             <tr>
                 <td>
-                    <a href="{{ product.get_absolute_url }}">
-                       <img src="{{ product.image.url }}">
+                    <a href="{{ game.get_absolute_url }}">
+                       <img src="{{ game.image.url }}">
                     </a>
                 </td>
-                <td>{% if product.name %}{{ product.name }}{% else %}asd{% endif %}</td>
-{#                <td>dadsada</td>#}
-                <td>{{ item.quantity }}</td>
-                <td><a href="{% url "cart_remove" product.id %}">Remove</a></td>
+                <td>{{ game.name }}</td>
+                <td>1</td>
+                <td>{% if game.name %}<a href="{% url "cart_remove" game.id %}">Remove</a>{% endif %}</td>
                 <td class="num">${{ item.price }}</td>
-                <td class="num">${{ item.total_price }}</td>
             </tr>
             {% endwith %}
         {% endfor %}
@@ -44,7 +41,7 @@
 
 
     <p class="text-right">
-        <a href="{% url "product_list" %}" class="button light">Continue shopping</a>
+        <a href="{% url "game_list" %}" class="button light">Continue shopping</a>
             <form action="{% url 'order_create' %}" method="POST">
                 {% csrf_token %}
             <input type="submit" class="btn btn-success" value="Send Order" id="confirmButton">
