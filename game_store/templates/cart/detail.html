@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for item in cart %}
+        {% for key, item in cart %}
             {% with product=item.product %}
             <tr>
                 <td>
@@ -45,6 +45,9 @@
 
     <p class="text-right">
         <a href="{% url "product_list" %}" class="button light">Continue shopping</a>
-        <a href="#" class="button">Checkout</a>
+            <form action="{% url 'order_create' %}" method="POST">
+                {% csrf_token %}
+            <input type="submit" class="btn btn-success" value="Send Order" id="confirmButton">
+            </form>
     </p>
 {% endblock %}

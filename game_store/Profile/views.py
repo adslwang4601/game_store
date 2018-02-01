@@ -17,7 +17,6 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib.auth.models import Permission
-from django.contrib.auth.models import ContentType
 
 def user_login(request):
     if request.user.is_authenticated:
@@ -51,7 +50,7 @@ def register(request):
         if user_form.is_valid():
             # Create a new user object but avoid saving it yet
             new_user = user_form.save(commit=False)
-            new_user.is_active = False
+            new_user.is_active = True
             # Set the chosen password
             new_user.set_password(user_form.cleaned_data['password1'])
             # Save the User object
@@ -65,7 +64,6 @@ def register(request):
             if user_form.cleaned_data['applyAsDeveloper']:
                 devs_group, _ = Group.objects.get_or_create(name='developers')
                 devs_group.user_set.add(user_profile.user)
-                content_type = ContentType.objects.get(app_label='gamedata', model='game')
                 permission_developer, created = Permission.objects.get_or_create(
                     codename='developer',
                     name='Developer',
@@ -100,10 +98,6 @@ def register(request):
             email.send()
             return HttpResponse('Please confirm your email address to complete the registration')
 
-            #
-            # return render(request,
-            #               'Profile/register_done.html',
-            #               {'new_user': new_user})
     else:
         user_form = RegistrationForm()
     return render(request, 'Profile/register.html', {'form': user_form})

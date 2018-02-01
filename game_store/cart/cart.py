@@ -54,10 +54,10 @@ class Cart(object):
         for game in games:
             self.cart[str(game.id)]['product'] = game
 
-        for item in self.cart.values():
+        for game_id, item in self.cart.items():
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['quantity']
-            yield item
+            yield game_id, item
 
     def __len__(self):
         """
