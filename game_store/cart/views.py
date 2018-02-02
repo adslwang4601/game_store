@@ -46,7 +46,6 @@ def cart_add(request, game_id):
 
 
 @login_required
-@require_POST
 def cart_remove(request, game_id):
     cart = Cart(request)
     game = get_object_or_404(Game, id=game_id)
