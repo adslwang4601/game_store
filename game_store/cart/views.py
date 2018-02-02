@@ -61,7 +61,8 @@ def order_create(request):
         gset = Game.objects.filter(id__in= game_ids)
         for game_id, item in zip(my_cart.cart.keys(), my_cart):
             if request.user.user_profile._ownedGames.filter(id__exact=game_id).count() > 0:
-                messages.error(request, "You already own the game %s. This item has been removed from the cart" % item['game'])
+                messages.error(request, "You already own the game %s" % item['game'])
+                return redirect('cart_detail')
             else:
                 total += item['price']
         # If somehow the cart is empty, deny the order creation and redirect the user to the cart.
@@ -198,6 +199,7 @@ def payment_result(request):
 
 
 def payment_success(request):
+    messages.info(request, "You can start to play this game")
     return HttpResponseRedirect(reverse('game_list'))
 
 
