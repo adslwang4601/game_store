@@ -49,7 +49,7 @@ class Cart(object):
         for game in games:
             self.cart[str(game.id)]['game'] = game
 
-        for game_id, item in self.cart.items():
+        for item in self.cart.values():
             item['price'] = Decimal(item['price'])
             yield item
 

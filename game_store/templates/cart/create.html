@@ -10,20 +10,42 @@
     <div class="order-info">
         <h3>Your order</h3>
         <ul>
-            {% for key, item in cart %}
+            {% for item in cart %}
             <li>
                 {{ item.game}}
                 <span>${{ item.total_price }}</span>
             </li>
             {% endfor %}
         </ul>
-    <p>Total: ${{ cart.get_total_price }}</p>
-</div>
+         <p>Total: ${{ cart.get_total_price }}</p>
+    </div>
+
+    <form action="{{ action }}" method="POST" id="purchaseForm">
+            <input type="hidden" name="pid" value="{{ pid }}" />
+            <input type="hidden" name="sid" value="{{ sid }}" />
+            <input type="hidden" name="success_url"
+                    value="{{ success_url }}" />
+            <input type="hidden" name="cancel_url"
+                    value="{{ cancel_url }}" />
+            <input type="hidden" name="error_url"
+                    value="{{ error_url }}" />
+            <input type="hidden" name="checksum"
+                    value="{{ checksum }}" />
+
+
+            <input type="text" id="id_amount" name="amount" value="{{ amount }}"/>
+            <label for="id_amount" class="alignRight">Amount</label>
+            <br/>
+            <br/>
+            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Pay!"/>
+    </form>
+
+
 
 {#<form action="." method="post" class="order-form">#}
 {#    {{ form.as_p }}#}
 {#    <p><input type="submit" value="Place order"></p>#}
 {#    {% csrf_token %}#}
 {#</form>#}
-   <a href='#' class="btn btn-info btn-primary" role="button">Pay Now</a>
+{#   <a href='#' class="btn btn-info btn-primary" role="button">Pay Now</a>#}
 {% endblock %}

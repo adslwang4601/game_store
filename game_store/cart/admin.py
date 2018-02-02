@@ -8,9 +8,8 @@ from .models import Order
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = [ 'paid',
-                    'created']
-    list_filter = ['paid', 'created']
+    list_display = ['paid', 'order_time']
+    list_filter = ['paid', 'order_time']
 
 
 admin.site.register(Order, OrderAdmin)

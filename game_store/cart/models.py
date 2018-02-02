@@ -4,7 +4,7 @@ sys.path.append('..')
 from gameinfo.models import Game
 from Profile.models import User_Profile
 from django.contrib.auth.models import AnonymousUser, User
-
+from django.utils import timezone
 class Order(models.Model):
     # PaymentId
     id = models.AutoField(primary_key=True)
@@ -17,19 +17,23 @@ class Order(models.Model):
     _games = models.ManyToManyField(Game, default=None, blank=True)
 
     # When the order was created
-    created = models.DateTimeField(auto_now_add=True)
+    order_time = models.DateTimeField(default=timezone.now, null=False)
+
+    # When the order was paid
+    payment_time = models.DateTimeField(default=timezone.now, null=False)
 
     # Whether be paid
-    paid = models.BooleanField(default=False)
+    paid = models.CharField(default=False, max_length=20)
+
+    # Total Price
+    total = models.DecimalField(max_digits=6, decimal_places=2, blank=False)
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('-order_time',)
 
     def __str__(self):
         return 'Order {}'.format(self.id)
 
-    def get_total_cost(self):
-        return sum(item.get_cost() for item in self.items.all())
 
 
 # class OrderItem(models.Model):
