@@ -25,7 +25,7 @@ from decimal import Decimal
 @require_GET
 def cart_detail(request):
     cart = Cart(request)
-    return render(request, 'cart/detail.html', {'cart': cart})
+    return render(request, 'cart/cart_detail.html', {'cart': cart})
 
 
 
@@ -116,7 +116,7 @@ def order_details(request, order_id):
         m = md5(checksumstr.encode("ascii"))
         checksum = m.hexdigest()
 
-        return render(request, 'cart/create.html', {'user': request.user,
+        return render(request, 'cart/order_detail.html', {'user': request.user,
                                                     'cart': my_cart,
                                                     'action': action,
                                                     'pid': pid,
