@@ -36,7 +36,7 @@ class Game(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2, blank=False)
     icon = models.ImageField("Game icon", null=True, blank=True, upload_to="games/icons")
     image = models.ImageField("Game image", null=True, blank=True, upload_to="games/image")
-    published_date = models.DateTimeField(default=timezone.now())
+    published_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return str(self.name)
@@ -44,6 +44,32 @@ class Game(models.Model):
     def get_absolute_url(self):
         return reverse('game_detail',
                        args=[self.id, self.slug])
+
+    def to_json(self, player=None):
+        json_list = {
+            'id': self.id,
+            'name':self.name,
+            'category': self.category,
+            'description': self.description,
+            'price': self.price,
+            'publisher':self.publisher.username,
+            'published_date': str(self.published_date),
+            'image': self.image,
+            'icon': self.icon,
+            # 'slug': reverse("play_game", kwargs={'game_id': self.id})
+            'slug': self.slug
+            # 'url': reverse("play_game", kwargs={'game_id': self.id}),
+            # 'leaderboard_url': reverse("leader_board_game", kwargs={'game_id': self.id})
+        }
+
+        if player is not None and isinstance(player, User) and player.is_authenticated:
+            o = player.user_profile._ownedGames.filter(id=self.id)
+            if o.count()>0:
+                json_list['owned'] = True
+            else:
+                json_list['owned'] = False
+
+        return json_list
 
 '''Game score'''
 class Game_Score(models.Model):
