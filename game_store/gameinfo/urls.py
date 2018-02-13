@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$',
         views.game_detail,
         name='game_detail'),
+    # url(r'^search/$',views.search_game,name="search")
+    
 ]
