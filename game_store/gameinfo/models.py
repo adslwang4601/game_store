@@ -33,6 +33,7 @@ class Game(models.Model):
     publisher = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,blank=False)
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
+    url = models.URLField(unique=True,default="")
     price = models.DecimalField(max_digits=6, decimal_places=2, blank=False)
     icon = models.ImageField("Game icon", null=True, blank=True, upload_to="games/icons")
     image = models.ImageField("Game image", null=True, blank=True, upload_to="games/image")
@@ -56,15 +57,13 @@ class Game(models.Model):
             'published_date': str(self.published_date),
             'image': self.image,
             'icon': self.icon,
-            # 'slug': reverse("play_game", kwargs={'game_id': self.id})
-            'slug': self.slug
-            # 'url': reverse("play_game", kwargs={'game_id': self.id}),
+            'url': reverse("play_game", kwargs={'game_id': self.id}),
             # 'leaderboard_url': reverse("leader_board_game", kwargs={'game_id': self.id})
         }
 
         if player is not None and isinstance(player, User) and player.is_authenticated:
-            o = player.user_profile._ownedGames.filter(id=self.id)
-            if o.count()>0:
+            whether_owned = player.user_profile._ownedGames.filter(id=self.id)
+            if whether_owned.count()>0:
                 json_list['owned'] = True
             else:
                 json_list['owned'] = False
