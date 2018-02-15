@@ -10,5 +10,5 @@ urlpatterns = [
         views.game_detail,
         name='game_detail'),
     # url(r'^search/$',views.search_game,name="search")
-    
+    url(r'^game_leader_board/(?P<game_id>[0-9]+)/$', views.game_leader_board, name='game_leader_board'),
 ]

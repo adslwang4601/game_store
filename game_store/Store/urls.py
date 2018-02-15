@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
 url(r'^$', views.dashboard, name='dashboard'),
-url(r'^search/$',views.search_game,name="search")
+url(r'^search/$',views.search_game,name="search"),
+url(r'^leader_board/$', views.leader_board, name='leader_board'),
 
         ]

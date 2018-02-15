@@ -8,24 +8,18 @@
       <table class="table table-hover" id="myTable">
         <thead>
           <tr>
-            <th data-field="logo">Logo</th>
-            <th data-field="name">Name</th>
-            <th data-field="category" >Category</th>
-            <th data-field="publicationDate">Publication Date</th>
-            <th data-field="scores">Scores</th>
-            <th data-field="scores">Leader Board</th>
+            <th data-field="player">Player</th>
+            <th data-field="score">Score</th>
+            <th data-field="played_time">Time</th>
             <!-- <th data-field="popularity">Popularity</th> -->
           </tr>
         </thead>
         <tbody>
-        {% for g in games %}
+        {% for s in scores %}
             <tr>
-                <td><img alt="image not available" class="gameImage" src="{{ g.icon }}"></td>
-                <td><a href="{{ g.url }}">{{ g.name }}</a></td>
-                <td>{{ g.category }}</td>
-                <td><script type="text/javascript">document.write(formatDate("{{ g.publicationDate }}"));</script></td>
-                <td><a href="{{g.scores}}">Scores</a></td>
-                <td><a href="{{g.game_leaderboard}}">Leader Board</a></td>
+                <td>{{ s.player }}</td>
+                <td>{{ s.score}}</td>
+                <td>{{ s.played_time }}</td>
                 <!-- <td>{{ g.popularity }}</td> -->
             </tr>
          {% endfor %}

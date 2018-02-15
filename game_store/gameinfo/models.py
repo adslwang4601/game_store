@@ -58,7 +58,8 @@ class Game(models.Model):
             'image': self.image,
             'icon': self.icon,
             'url': reverse("play_game", kwargs={'game_id': self.id}),
-            # 'leaderboard_url': reverse("leader_board_game", kwargs={'game_id': self.id})
+            'scores': reverse("scores", kwargs={'game_id': self.id}),
+            'game_leaderboard': reverse("game_leader_board", kwargs={'game_id': self.id})
         }
 
         if player is not None and isinstance(player, User) and player.is_authenticated:
@@ -70,12 +71,12 @@ class Game(models.Model):
 
         return json_list
 
-'''Game score'''
-class Game_Score(models.Model):
-    game = models.ForeignKey(Game, on_delete=models.CASCADE, blank=False)
-    player = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
-    score = models.PositiveIntegerField(blank=False)
-    date = models.DateTimeField(blank=False, default=timezone.now)
+# '''Game score'''
+# class Game_Score(models.Model):
+#     game = models.ForeignKey(Game, on_delete=models.CASCADE, blank=False)
+#     player = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
+#     score = models.PositiveIntegerField(blank=False)
+#     date = models.DateTimeField(blank=False, default=timezone.now)
 
 '''Game sale'''
 class Game_Sale(models.Model):

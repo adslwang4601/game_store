@@ -8,20 +8,22 @@
       <table class="table table-hover" id="myTable">
         <thead>
           <tr>
-            <th data-field="logo">Logo</th>
+            <th data-field="icon">Logo</th>
             <th data-field="name">Name</th>
             <th data-field="category" >Category</th>
             <th data-field="publicationDate">Publication Date</th>
+            <th data-field="leaderboard">Leader Board</th>
             <!-- <th data-field="popularity">Popularity</th> -->
           </tr>
         </thead>
         <tbody>
         {% for g in games %}
             <tr>
-                <td><img alt="image not available" class="gameImage" src="{{ g.logo }}"></td>
+                <td><img alt="image not available" class="gameImage" src="{{ g.icon}}"></td>
                 <td><a href="{{ g.get_absolute_url }}">{{ g.name }}</a></td>
                 <td>{{ g.category }}</td>
                 <td><script type="text/javascript">document.write(formatDate("{{ g.publicationDate }}"));</script></td>
+                <td><a href="{% url 'game_leader_board' g.id %}">Leader Board</a></td>
                 <!-- <td>{{ g.popularity }}</td> -->
             </tr>
          {% endfor %}

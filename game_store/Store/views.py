@@ -25,3 +25,7 @@ def search_game(request):
     games = Game.objects.filter(name__icontains=q)
     return render(request,'game/search.html',{"games":games})
 
+def leader_board(request):
+    games = Game.objects.all()
+    return render(request, "game/leader_board.html")
+
