@@ -50,7 +50,7 @@ class Game(models.Model):
         return reverse('game_detail',
                        args=[self.id, self.slug])
 
-    def to_json(self, player=None):
+    def to_json(self):
         json_list = {
             'id': self.id,
             'name':self.name,
@@ -65,31 +65,8 @@ class Game(models.Model):
             'scores': reverse("scores", kwargs={'game_id': self.id}),
             'game_leaderboard': reverse("game_leader_board", kwargs={'game_id': self.id})
         }
-
-        if player is not None and isinstance(player, User_Profile) and player.is_authenticated:
-            whether_owned = player.user_profile._ownedGames.filter(id=self.id)
-            if whether_owned.count()>0:
-                json_list['owned'] = True
-            else:
-                json_list['owned'] = False
-
         return json_list
 
-<<<<<<< HEAD
-# '''Game score'''
-# class Game_Score(models.Model):
-#     game = models.ForeignKey(Game, on_delete=models.CASCADE, blank=False)
-#     player = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
-#     score = models.PositiveIntegerField(blank=False)
-#     date = models.DateTimeField(blank=False, default=timezone.now)
-=======
-'''Game score'''
-class Game_Score(models.Model):
-    game = models.ForeignKey(Game, on_delete=models.CASCADE, blank=False)
-    player = models.ForeignKey(User_Profile, on_delete=models.CASCADE, blank=False)
-    score = models.PositiveIntegerField(blank=False)
-    date = models.DateTimeField(blank=False, default=timezone.now)
->>>>>>> 252e7c61bb09052a4144bd0252cec6832c90fcc8
 
 '''Game sale'''
 class Game_Sale(models.Model):

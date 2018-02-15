@@ -15,7 +15,7 @@ from gameinfo.models import Game
 import json
 
 def owned_games(request):
-    games = [g.to_json(request.user) for g in request.user.user_profile._ownedGames.all()]
+    games = [g.to_json() for g in request.user.user_profile._ownedGames.all()]
     context = {'user': request.user, "games":games}
     return render(request, 'game/owned_games.html', {'user': request.user, 'games': games})
 
@@ -28,7 +28,7 @@ def play_game(request,game_id):
         return HttpResponseRedirect(reverse("game_list"))
 
     if request.method == 'GET':
-        context = {'game': game.to_json(request.user.user_profile),'game_url': game.url}
+        context = {'game': game.to_json(),'game_url': game.url}
         return render(request,"game/play_game.html", context)
 
     elif request.method == 'POST':
@@ -110,7 +110,6 @@ def player_game_score(request, game_id):
         context = {'user': request.user, "scores":scores}
         
         return render(request, 'game/scores.html', context)
-
 
 
 

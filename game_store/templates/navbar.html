@@ -49,7 +49,7 @@
                         <a class="dropdown-item" href="{% url 'logged_out' %}">Logout</a>
                         <a class="dropdown-item" href="{% url 'my_profile' %}">my profile</a>
                         {% for group in request.user.groups.all %}
-                        {% if group.name == 'developers' %}
+                        {% if group.name == 'players' %}
                         <a class="dropdown-item" href="{% url 'owned_games' %}">owned_games</a>
                         {% endif %}
                         {% endfor %}
