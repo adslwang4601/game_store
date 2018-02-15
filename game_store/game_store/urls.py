@@ -19,6 +19,8 @@ from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
 from Profile import views
+from django.views.generic import TemplateView
+
 
 import sys
 sys.path.append("..")
@@ -27,7 +29,7 @@ sys.path.append("..")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('Store.urls')),
+    path('', TemplateView.as_view(template_name="game/dashboard.html"), name='dashboard'),
     path('cart/', include('cart.urls'), name='cart'),
     path('Profile/', include('Profile.urls'), name='profile'),
     path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', views.activate, name='activate'),

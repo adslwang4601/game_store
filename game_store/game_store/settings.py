@@ -36,7 +36,6 @@ SITE_ID = 1
 INSTALLED_APPS = [
     'cart',
     'Profile',
-    'Store',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

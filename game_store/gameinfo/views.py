@@ -10,6 +10,8 @@ from players.models import Game_Score
 from django.http.response import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Max
+from django.shortcuts import render
+from gameinfo.models import Game
 
 def game_list(request, category_slug=None):
     category = None
@@ -40,6 +42,25 @@ def game_leader_board(request,game_id):
     return render(request, 'game/game_leader_board.html', context)
 
 
+def search_game(request):
+    q = request.GET.get('q')
+    if not q:
+        # return render(request, 'game/dashboard.html')
+        return HttpResponseRedirect(reverse('game_list'))
+
+    # games = [g.to_json() for g in Game.objects.filter(name__icontains=q)]
+    # # user = request.user
+    # # profile = User_Profile.objects.filter(user=user).get()
+    # # games = [g.to_json(request.user) for g in profile._ownedGames.all()]
+    # # Return a list of games owned by the logged user
+    # context = {"games":games}
+    # return render(request, 'game/search.html',context)
+    games = Game.objects.filter(name__icontains=q)
+    return render(request,'game/search.html',{"games":games})
+
+def leader_board(request):
+    games = Game.objects.all()
+    return render(request, "game/leader_board.html")
 
 
 
