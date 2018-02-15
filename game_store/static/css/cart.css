@@ -128,20 +128,24 @@ ul.errorlist {
 #subheader {
     background:#ececec;
     color:#444;
-    padding:15px 100px;
+    padding:10px 5px 15px 20px;
     overflow:auto;
+    margin-left:10%;
+
 }
 
 #header .logo {
     font-family: 'Ubuntu', sans-serif;
     float:left;
-    color:#333;
+    color:white;
     font-size:22px;
-    margin-right:10%;
+    margin-left:0.1%;
+
+
 }
 
 #subheader .cart {
-    float:right;
+    float:left;
     padding-top:4px;
 }
 
@@ -317,3 +321,4 @@ ul.errorlist {
 .recommendations.cart img {
     width:120px;
 }
+

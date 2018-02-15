@@ -52,7 +52,7 @@ def cart_remove(request, game_id):
     cart.remove(game)
     return redirect('cart_detail')
 
-
+@login_required
 def order_create(request):
     total = Decimal(0)
     my_cart = Cart(request)
@@ -81,7 +81,7 @@ def order_create(request):
 
 
 
-
+@login_required
 def order_details(request, order_id):
     if request.method == 'GET':
         my_cart = Cart(request)
@@ -131,7 +131,7 @@ def order_details(request, order_id):
     else:
         return HttpResponse(content='POST method is prohibited', status=405)
 
-
+@login_required
 def payment_result(request):
 
     if request.method == 'GET':
@@ -197,7 +197,7 @@ def payment_result(request):
         # This view only supports GET
         return HttpResponse(status=405, content="Invalid method.")
 
-
+@login_required
 def payment_success(request):
     messages.info(request, "You can start to play this game")
     return HttpResponseRedirect(reverse('game_list'))

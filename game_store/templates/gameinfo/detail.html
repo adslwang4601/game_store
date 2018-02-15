@@ -22,7 +22,7 @@
 
     <div id="content">
         <div class="game-detail">
-             <img src="{{ game.image.url }}">
+             <img src="{{ game.image }}">
             <h1>{{ game.name }}</h1>
             <h2><a href="{{ game.category.get_absolute_url }}">{{ game.category }}</a></h2>
             <p class="price">${{ game.price }}</p>

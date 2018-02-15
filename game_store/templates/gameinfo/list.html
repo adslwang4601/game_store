@@ -3,7 +3,7 @@
 {% block content %}
   <div id="header">
         <a href="/" class="logo">My shop</a>
-    </div>
+  </div>
     <div id="subheader">
         <div class="cart">
             Your cart is empty.
@@ -28,7 +28,7 @@
         {% for game in games %}
             <div class="item">
                 <a href="{{ game.get_absolute_url }}">
-                    <img src="{{ game.image.url }}">
+                    <img src="{{ game.image }}">
                 </a>
                 <p>
                 <a href="{{ game.get_absolute_url }}">{{ game.name }}</a><br>

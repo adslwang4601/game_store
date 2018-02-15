@@ -8,8 +8,10 @@
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-    <link href="{% static "css/cart.css" %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"  href="{% static "css/cart.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-social.css' %}" />
 
     {% block pluggable_style %}
@@ -35,7 +37,7 @@
     {% comment %}
         Content displays the most important part of the page, could be a form for login or a list of game.
     {% endcomment %}
-    {% include "./navbar.html" %}
+    {% include "./navbar2.html" %}
     <div class="container">
         <div class="row" id="message">
             <div class="col-md-8" id="content">
