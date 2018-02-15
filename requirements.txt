@@ -7,3 +7,4 @@ psycopg2==2.7
 python-social-auth==0.2.14
 static3==0.5.1
 django-allauth==0.35.0
+Pillow==5.0.0
