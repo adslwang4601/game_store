@@ -168,3 +168,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 CART_SESSION_ID = 'cart'
 
 AUTH_PROFILE_MODULE = 'Profile.User_Profile'
+
+if "DYNO" in os.environ:
+    STATIC_ROOT = 'staticfiles'
+    import dj_database_url
+    DATABASES['default'] =  dj_database_url.config()
+
+    DEBUG = True # False, once service is succesfully deployed
+    ALLOWED_HOSTS = ['*']

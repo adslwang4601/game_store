@@ -14,14 +14,6 @@ from cart.models import Order
 from django.db import connection
 from django.db.models import Sum, Count
 
-# Create your views here.
-# def uploads(request,user_id)
-#     """Game uploads"""
-#     games_published = Games.objects.filter(publisher=user_id)
-#     context = {
-#     'games' : games_published
-#     }
-#     return render(request, 'game_store',uploads.html', context)
 
 @login_required(login_url='log_in')
 @permission_required(perm='Profile.developer')
