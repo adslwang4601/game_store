@@ -68,7 +68,7 @@ def play_game(request,game_id):
                 return JsonResponse(status=400, data=response)
 
             saving = Saved_Game.objects.update_or_create( played_game=game,
-                                                         _player=request.user.profile)[0]
+                                                         _player=request.user.user_profile)[0]
             saving.savedDate = datetime.datetime.utcnow()
             saving.status = saveForm.cleaned_data['gameState']
             # settings??

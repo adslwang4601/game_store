@@ -17,7 +17,6 @@
             <th data-field="name">Name</th>
             <th data-field="category" >Category</th>
             <th data-field="publicationDate">Publication Date</th>
-            <th data-field="popularity">Popularity</th>
           </tr>
         </thead>
         <tbody>
@@ -27,11 +26,10 @@
         {% endcomment %}
         {% for g in games %}
             <tr>
-                <td><img alt="image not available" class="gameImage" src="{{ g.logo }}"></td>
+                <td><img alt="image not available" class="gameImage" src="{{ g.image }}"></td>
                 <td><a href="{% url 'edit_game' g.id %}">{{ g.name }}</a></td>
                 <td>{{ g.category }}</td>
-                <td><script type="text/javascript">document.write(formatDate("{{ g.publicationDate }}"));</script></td>
-                <td>{{ g.popularity }}</td>
+                <td><script type="text/javascript">document.write(formatDate("{{ g.published_date }}"));</script></td>
             </tr>
          {% endfor %}
         </tbody>
