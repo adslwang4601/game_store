@@ -1,13 +1,10 @@
-from django.contrib import admin
-from django.urls import path
 from django.conf.urls import include, url
-from django.conf import settings
-from django.conf.urls.static import static
-# import sys
-# sys.path.insert(0, '/Users/adslwang4601/Desktop/course/game_store/game_store/Store')
-# from views import dashboard
+from .views import developer_games, edit_game, request_developer_statistics
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-
+    # For Logged users=>Developers
+    url(r'^games/$', developer_games, name='dev_games'),
+    url(r'^edit_game/(?P<game_id>[0-9]+)/$', edit_game, name='edit_game'),
+    url(r"^stats/$", request_developer_statistics, name='statistics'),
+    # url(r'^inventory/$', views.inventory, name='inventory'),
 ]

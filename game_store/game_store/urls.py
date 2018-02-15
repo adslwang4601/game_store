@@ -35,6 +35,7 @@ urlpatterns = [
     path('players/', include('players.urls'), name='players'),
     path('accounts/', include('allauth.urls'), name='accounts'),
     path('game/', include('gameinfo.urls'), name='gameinfo')
+
 ]
 
 

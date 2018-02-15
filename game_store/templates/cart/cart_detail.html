@@ -8,7 +8,6 @@
     <table class="table ">
         <thead>
             <tr>
-                <th>Image</th>
                 <th>Game</th>
                 <th>Quantity</th>
                 <th>Remove</th>
@@ -19,11 +18,11 @@
         {% for item in cart %}
             {% with game=item.game %}
             <tr>
-                <td>
-                    <a href="{{ game.get_absolute_url }}">
-                       <img src="{{ game.image.url }}">
-                    </a>
-                </td>
+{#                <td>#}
+{#                    <a href="{{ game.get_absolute_url }}">#}
+{#                       <img src="{{ game.image }}">#}
+{#                    </a>#}
+{#                </td>#}
                 <td>{{ game.name }}</td>
                 <td>1</td>
                 <td>{% if game.name %}<a href="{% url "cart_remove" game.id %}">Remove</a>{% endif %}</td>
