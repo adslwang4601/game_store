@@ -24,7 +24,7 @@ from django.contrib.auth.decorators import permission_required
 
 @login_required
 @require_GET
-@permission_required(perm='Profile.developer')
+@permission_required(perm='Profile.players')
 def cart_detail(request):
     cart = Cart(request)
     return render(request, 'cart/cart_detail.html', {'cart': cart})
@@ -33,7 +33,7 @@ def cart_detail(request):
 
 @login_required
 @require_POST
-@permission_required(perm='Profile.developer')
+@permission_required(perm='Profile.players')
 def cart_add(request, game_id):
     cart = Cart(request)
     game= get_object_or_404(Game, id=game_id)
@@ -49,7 +49,7 @@ def cart_add(request, game_id):
 
 
 @login_required
-@permission_required(perm='Profile.developer')
+@permission_required(perm='Profile.players')
 def cart_remove(request, game_id):
     cart = Cart(request)
     game = get_object_or_404(Game, id=game_id)
@@ -57,7 +57,7 @@ def cart_remove(request, game_id):
     return redirect('cart_detail')
 
 @login_required
-@permission_required(perm='Profile.developer')
+@permission_required(perm='Profile.players')
 def order_create(request):
     total = Decimal(0)
     my_cart = Cart(request)
@@ -87,7 +87,7 @@ def order_create(request):
 
 
 @login_required
-@permission_required(perm='Profile.developer')
+@permission_required(perm='Profile.players')
 def order_details(request, order_id):
     if request.method == 'GET':
         my_cart = Cart(request)
@@ -138,7 +138,7 @@ def order_details(request, order_id):
         return HttpResponse(content='POST method is prohibited', status=405)
 
 @login_required
-@permission_required(perm='Profile.developer')
+@permission_required(perm='Profile.players')
 def payment_result(request):
 
     if request.method == 'GET':
@@ -205,7 +205,7 @@ def payment_result(request):
         return HttpResponse(status=405, content="Invalid method.")
 
 @login_required
-@permission_required(perm='Profile.developer')
+@permission_required(perm='Profile.players')
 def payment_success(request):
     messages.info(request, "You can start to play this game")
     return HttpResponseRedirect(reverse('game_list'))
