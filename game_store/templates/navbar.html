@@ -27,10 +27,10 @@
 
 {#                 {% if user.is_authenticated and request.user.groups.all.name == 'developers' %}#}
                   <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <button class="btn btn-secondary dropdown-toggle btn-outline-success" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      developer
-                     </a>
-                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     </button>
+                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{% url 'statistics' %}">statistics</a>
                         <a class="dropdown-item" href="{% url 'dev_games' %}">inventory</a>
                      </div>

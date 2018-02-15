@@ -106,7 +106,7 @@ def player_game_score(request, game_id):
             game_scores = Game_Score.objects.filter(played_game=game,_player=request.user.user_profile).order_by("-score")
         except ObjectDoesNotExist:
             return HttpResponse("Game_Score id does not exist.")
-        scores = [s.to_json(request.user) for s in game_scores]
+        scores = [s.to_json() for s in game_scores]
         context = {'user': request.user, "scores":scores}
         
         return render(request, 'game/scores.html', context)
