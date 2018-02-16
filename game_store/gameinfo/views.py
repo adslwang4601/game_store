@@ -45,22 +45,22 @@ def game_leader_board(request,game_id):
 def search_game(request):
     q = request.GET.get('q')
     if not q:
-        # return render(request, 'game/dashboard.html')
         return HttpResponseRedirect(reverse('game_list'))
-
-    # games = [g.to_json() for g in Game.objects.filter(name__icontains=q)]
-    # # user = request.user
-    # # profile = User_Profile.objects.filter(user=user).get()
-    # # games = [g.to_json(request.user) for g in profile._ownedGames.all()]
-    # # Return a list of games owned by the logged user
-    # context = {"games":games}
-    # return render(request, 'game/search.html',context)
     games = Game.objects.filter(name__icontains=q)
     return render(request,'game/search.html',{"games":games})
 
-def leader_board(request):
+def leader_board(request,category_slug=None):
+    category = None
+    categories = Category.objects.all()
     games = Game.objects.all()
-    return render(request, "game/leader_board.html")
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        games = games.filter(category=category)
+    return render(request,
+                  'game/leader_board.html',
+                  {'category': category,
+                  'categories': categories,
+                  'games': games})
 
 
 

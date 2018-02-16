@@ -22,6 +22,9 @@ class Category(models.Model):
         return reverse('game_list_by_category',
                        args=[self.slug])
 
+    def filtered(self):
+        return reverse("leader_board_category",args=[self.slug])
+
 ''' Model for game'''
 class Game(models.Model):
     '''
@@ -49,6 +52,9 @@ class Game(models.Model):
         return reverse('game_detail',
                        args=[self.id, self.slug])
 
+    def game_leaderboard(self):
+        return reverse("game_leader_board", kwargs={'game_id': self.id})
+
     def to_json(self):
         json_list = {
             'id': self.id,
@@ -57,7 +63,7 @@ class Game(models.Model):
             'description': self.description,
             'price': self.price,
             'publisher':self.publisher.user.username,
-            'published_date': str(self.published_date),
+            'published_date': self.published_date,
             'image': self.image,
             'icon': self.icon,
             'url': reverse("play_game", kwargs={'game_id': self.id}),

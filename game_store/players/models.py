@@ -19,7 +19,7 @@ class Game_Score(models.Model):
         json_list = {
             'game': self.played_game.name,
             'score': self.score,
-            'played_time': str(self.played_time),
+            'played_time': self.played_time,
             'player': self._player.user.username
         }
 

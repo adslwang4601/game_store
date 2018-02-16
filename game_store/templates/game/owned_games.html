@@ -11,7 +11,6 @@
             <th data-field="logo">Logo</th>
             <th data-field="name">Name</th>
             <th data-field="category" >Category</th>
-            <th data-field="publicationDate">Publication Date</th>
             <th data-field="scores">Scores</th>
             <th data-field="scores">Leader Board</th>
             <!-- <th data-field="popularity">Popularity</th> -->
@@ -23,7 +22,7 @@
                 <td><img alt="image not available" class="gameImage" src="{{ g.icon }}"></td>
                 <td><a href="{{ g.url }}">{{ g.name }}</a></td>
                 <td>{{ g.category }}</td>
-                <td><script type="text/javascript">document.write(formatDate("{{ g.publicationDate }}"));</script></td>
+                {% comment %} <td><script type="text/javascript">document.write(formatDate("{{ g.publicationDate }}"));</script></td> {% endcomment %}
                 <td><a href="{{g.scores}}">Scores</a></td>
                 <td><a href="{{g.game_leaderboard}}">Leader Board</a></td>
                 <!-- <td>{{ g.popularity }}</td> -->

@@ -22,7 +22,7 @@
                 <td><img alt="image not available" class="gameImage" src="{{ g.icon}}"></td>
                 <td><a href="{{ g.get_absolute_url }}">{{ g.name }}</a></td>
                 <td>{{ g.category }}</td>
-                <td><script type="text/javascript">document.write(formatDate("{{ g.publicationDate }}"));</script></td>
+                <td>{{g.published_date |date:'Y-m-d' }}</td>
                 <td><a href="{% url 'game_leader_board' g.id %}">Leader Board</a></td>
                 <!-- <td>{{ g.popularity }}</td> -->
             </tr>

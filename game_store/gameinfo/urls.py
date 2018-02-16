@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     url(r'^leader_board/$', views.leader_board, name='leader_board'),
+    url(r'^leader_board/(?P<category_slug>[-\w]+)/$', views.leader_board, name='leader_board_category'),
     url(r'^search/$', views.search_game, name="search"),
     url(r'^(?P<category_slug>[-\w]+)/$',
         views.game_list,

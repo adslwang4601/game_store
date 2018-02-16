@@ -1,12 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    Test
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}My games{% endblock %}
+
+{% block content %}
+
+    <div class="table-responsive" id="myTableContainer">
+      <table class="table table-hover" id="myTable">
+        <thead>
+          <tr>
+            <th data-field="logo">Logo</th>
+            <th data-field="name">Name</th>
+            <th data-field="category" >Category</th>
+            <th data-field="publisher">Publisher</th>
+            <th data-field="publicationDate">Publication Date</th>
+            <th data-field="scores">Leader Board</th>
+            <!-- <th data-field="popularity">Popularity</th> -->
+          </tr>
+        </thead>
+        <tbody>
+        {% for g in games %}
+            <tr>
+                <td><img alt="image not available" class="gameImage" src="{{ g.icon }}"></td>
+                <td><a href="{{ g.get_absolute_url }}">{{ g.name }}</a></td>
+                <td>{{ g.category }}</td>
+                <td>{{g.publisher.user.username}}</td>
+                {% comment %} <td><script type="text/javascript">document.write(formatDate("{{ g.publicationDate }}"));</script></td> {% endcomment %}
+                <td>{{g.published_date |date:'Y-m-d' }}</td>
+                <td><a href="{{g.game_leaderboard}}">Leader Board</a></td>
+                <!-- <td>{{ g.popularity }}</td> -->
+            </tr>
+         {% endfor %}
+        </tbody>
+      </table>
+      </div>
+
+
+     <script type="text/javascript">
+        $( "#navbar-MyGames" ).addClass('active');
+     </script>
+
+{% endblock %}
+
+{% block sidebar %}
+
+    <div id="sidebarContent">
+        <p class="lead">Your game collection.</p>
+        <p>In this page you can go through your game and choose the one that you want to play.</p>
+        <p>Open one game by click his name.</p>
+    </div>
+    <h3>Categories</h3>
+    <ul>
+        <li {% if not category %}class="selected"{% endif %}>
+            <a href="{% url "leader_board" %}">All</a>
+        </li>
+    {% for c in categories %}
+        <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+            <a href={{c.filtered}}>{{ c.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
