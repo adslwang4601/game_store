@@ -30,7 +30,7 @@ class Game(models.Model):
     - image: 256x256
     '''
     name = models.CharField(max_length=50, unique=True, blank=False)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     publisher = models.ForeignKey(User_Profile, on_delete=models.CASCADE, blank=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,blank=False)
     slug = models.SlugField(max_length=200, db_index=True, unique=False)
@@ -40,7 +40,6 @@ class Game(models.Model):
     image = models.URLField(default="http://www.yourimage.com")
     # icon = models.ImageField("Game icon", null=True, blank=True, upload_to="games/icons")
     # image = models.ImageField("Game image", null=True, blank=True, upload_to="games/image")
-
     published_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

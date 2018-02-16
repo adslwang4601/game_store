@@ -36,15 +36,19 @@ def cart_detail(request):
 @permission_required(perm='Profile.players')
 def cart_add(request, game_id):
     cart = Cart(request)
-    game= get_object_or_404(Game, id=game_id)
-    cart.add(game=game)
+    game = get_object_or_404(Game, id=game_id)
+    success = cart.add(game=game)
     cart.save()
     # form = CartAddGameForm(request.POST)
     # if form.is_valid():
     #     cd = form.cleaned_data
     #     cart.add(game=game)
     # return HttpResponse("Here's the text of the Web page.")
-    return redirect('cart_detail')
+    if success:
+        return redirect('cart_detail')
+    else:
+        messages.error(request, 'You already have put this game in cart')
+        return redirect('game_detail', id=game.id, slug=game.slug)
     # return render(request, 'cart/detail.html', {'cart': cart})
 
 

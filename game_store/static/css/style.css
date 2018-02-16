@@ -228,9 +228,7 @@ form .errorlist{
     margin-bottom: 20px;
 }
 
-.table {
-    background-color: #f9f9f9;
-}
+
 
 .bootstrap-table .table > thead :first-child {
     background-color:#2a6496;

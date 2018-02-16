@@ -111,12 +111,12 @@ def request_developer_statistics(request):
         year = str(datetime.datetime.now().year)
 
     stats_by_game = get_transactions_by_game(request.user.user_profile, year = year)
-    stats_by_month = get_transaction_by_month(request.user.user_profile, year=year)
+    stats_history = get_transaction_history(request.user.user_profile, year=year)
 
     context = {}
 
     context["stats_by_game"] = stats_by_game
-    context["stats_by_month"] = stats_by_month
+    context["stats_history"] = stats_history
     context["year"] = year
     context["last_year"] = int(year) - 1
     context["next_year"] = int(year) + 1
@@ -133,10 +133,15 @@ def get_transactions_by_game(user, year=None, reverse=True):
     #                                         )
     game_list = []
     for game in games:
-        game_list.append(game)
-        transactions = Order.objects.filter(_games__in=game_list, paid='yes')
+        # game_list.append(game)
+        # transactions = game.objects.filter()
+        # number_of_transactions = transactions.count()
+        # revenue = game.price * number_of_transactions
+
+        transactions = Order.objects.filter(_games__id=game.id, paid='yes')
         number_of_transactions = transactions.count()
-        revenue = transactions.aggregate(Sum('total'))['total__sum']
+        revenue = game.price * number_of_transactions
+        # revenue = transactions.aggregate(Sum('total'))['total__sum']
     # Group_by _games
     # data = games_data.values("_games").annotate(Count('id'))
     # for d in data:
@@ -155,19 +160,41 @@ def get_transactions_by_game(user, year=None, reverse=True):
 
     return sorted(bought_counts, key=lambda k: k['revenue'], reverse=reverse)
 
-def get_transaction_by_month(user, year=None):
+def get_transaction_history(user, year=None):
+    # 1. 提取游戏中包含某个作者的订单
+    # 2. 提取该作者的所有游戏
+    # 3. 提取包含在某个订单中的所有游戏
+    # 4. 创建字典，Key为时间
+    buy_history = []
+    # transactions = Order.objects.filter(_games__publisher=user)
     games = Game.objects.filter(publisher=user)
-    if len(games) <= 1:
-        games = list(games)
-    transactions = Order.objects.filter(_games__in=games,
-                                        paid='yes',
-                                        )
-    if year:
-        transactions = transactions.filter(payment_time__year=year)
+    for transaction in Order.objects.all():
+        for game in games:
+            trans_games_names = [trans_game.name for trans_game in transaction._games.all()]
+            if game.name in trans_games_names:
+                buy_history.append([transaction.payment_time, game.name, game.price])
 
-    truncate_date = connection.ops.date_trunc_sql('month', 'payment_time')
-    qs = transactions.extra({'month': truncate_date})
-    report = qs.values('month').annotate(copies_sold=Count('pk'), revenue=Sum('total')).order_by('month')
+    # total_amount = 0
+    # games = Game.objects.filter(publisher=user)
+    # if len(games) <= 1:
+    #     games = list(games)
+    # for game in games:
+    #     if year:
+    #         transactions = Order.objects.filter(_games__id=game.id, paid='yes', payment_time=year)
+    #     else:
+    #         transactions = Order.objects.filter(_games__id=game.id, paid='yes')
+    #     number_of_transactions = transactions.count()
+    #     revenue = game.price * number_of_transactions
+    # total_amount += revenue
+    # transactions = Order.objects.filter(_games__in=games,
+    #                                     paid='yes',
+    #                                     )
+    # if year:
+    #     transactions = transactions.filter(payment_time__year=year)
+    #
+    # truncate_date = connection.ops.date_trunc_sql('month', 'payment_time')
+    # qs = transactions.extra({'month': truncate_date})
+    # report = qs.values('month').annotate(copies_sold=Count('pk'), revenue=Sum('total')).order_by('month')
 
-    return report
+    return buy_history
 

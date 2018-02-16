@@ -18,11 +18,13 @@ class Cart(object):
         """
         Add a product to the cart or update its quantity.
         """
+        success = False
         game_id = str(game.id)
         if game_id not in self.cart:
             self.cart[game_id] = {'price': str(game.price)}
+            success = True
         self.save()
-
+        return success
     def save(self):
         # update the session cart
         self.session[settings.CART_SESSION_ID] = self.cart
