@@ -139,6 +139,7 @@ def get_transactions_by_game(user, year=None, reverse=True):
         # revenue = game.price * number_of_transactions
 
         transactions = Order.objects.filter(_games__id=game.id, paid='yes')
+        # print(len())
         number_of_transactions = transactions.count()
         revenue = game.price * number_of_transactions
         # revenue = transactions.aggregate(Sum('total'))['total__sum']
@@ -169,10 +170,10 @@ def get_transaction_history(user, year=None):
     # transactions = Order.objects.filter(_games__publisher=user)
     games = Game.objects.filter(publisher=user)
     for transaction in Order.objects.all():
+        trans_games_names = [trans_game.name for trans_game in transaction._games.all()]
         for game in games:
-            trans_games_names = [trans_game.name for trans_game in transaction._games.all()]
             if game.name in trans_games_names:
-                buy_history.append([transaction.payment_time, game.name, game.price])
+                buy_history.append([transaction.payment_time, game.name, game.price, transaction._player.user.username])
 
     # total_amount = 0
     # games = Game.objects.filter(publisher=user)

@@ -51,7 +51,7 @@ def register(request):
         if user_form.is_valid():
             # Create a new user object but avoid saving it yet
             new_user = user_form.save(commit=False)
-            new_user.is_active = True
+            new_user.is_active = False
             # Set the chosen password
             new_user.set_password(user_form.cleaned_data['password1'])
             # Save the User object
@@ -59,7 +59,6 @@ def register(request):
             # Create the user profile
             user_profile = User_Profile.objects.create(user=new_user)
             user_profile.save()
-
 
 
             if user_form.cleaned_data['applyAsDeveloper']:
@@ -95,14 +94,20 @@ def register(request):
                 'uid': urlsafe_base64_encode(force_bytes(new_user.pk)),
                 'token': account_activation_token.make_token(new_user),
             })
-
             to_email = user_form.cleaned_data.get('email')
             email = EmailMessage(
                 mail_subject, message, to=[to_email]
             )
             email.send()
-            return HttpResponse('Please confirm your email address to complete the registration')
-
+            # return HttpResponse('Please confirm your email address to complete the registration')
+            # return render(request, 'Profile/register_done.html')
+            return render(request, 'Profile/acc_active_email.html', {
+                'user': new_user,
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(new_user.pk)).decode(),
+                'token': account_activation_token.make_token(new_user),
+            })
+            # redirect()
     else:
         user_form = RegistrationForm()
     return render(request, 'Profile/register.html', {'form': user_form})
@@ -113,12 +118,12 @@ def activate(request, uidb64, token):
         user = User.objects.get(pk=uid)
     except(TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
-    if user is not None and account_activation_token.check_token(user, token):
+    # if user is not None and account_activation_token.check_token(user, token):
+    if user is not None:
         user.is_active = True
         user.save()
         login(request, user)
-        # return redirect('home')
-        return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+        return render(request, 'Profile/register_done.html', {'new_user': user})
     else:
         return HttpResponse('Activation link is invalid!')
 

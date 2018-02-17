@@ -5,11 +5,12 @@ from django.conf.urls import include, url
 #     password_reset_done, password_reset_confirm, password_reset_complete
 from django.contrib.auth.views import login, logout, password_change, password_change_done, password_reset, \
     password_reset_done, password_reset_confirm, password_reset_complete
-from .views import register, user_login, edit, my_profile
+from .views import register, user_login, edit, my_profile, activate
 from django.urls import reverse_lazy
 from django.contrib.auth import views
+from django.views.generic import TemplateView
 
-
+# app_name = 'profile'
 urlpatterns = [
     # # url(r'^log_in/$', user_login, {'template_name': 'Profile/log_in.html'}, name='login'),
     # path('log_in/', user_login, name='log_in'),
@@ -43,5 +44,12 @@ urlpatterns = [
     path('reset/<uidb64>/<token>/', views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset/done/', views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('my_profile/', my_profile, name='my_profile'),
-    path('edit/', edit, name='edit')
+    path('edit/', edit, name='edit'),
+    # path('activate/<uidb64>/<token>/', activate, name='activate'),
+    # url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,80})/$',
+    #     activate, name='activate'),
+    # url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', activate, name='activate'),
+    path('confirm_email/', TemplateView.as_view(template_name="Profile/acc_active_email.html"), name='confirm_email' ),
+    # url(r'^activate/(?P<uidb64>[-\w]+)/(?P<token>[-\w]+)/$', activate, name='activate')
+    path('activate/(<uidb64>/<token>/', activate, name='activate')
 ]

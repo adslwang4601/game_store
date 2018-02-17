@@ -36,14 +36,14 @@ selected
 
 	<div class="stat_tables_wrapper">
 		<div class="half_page">
-			<h4 class="stat_table_title">Games by revenue</h4>
+			<h4 class="stat_table_title">Sales for each game</h4>
 
 			<table class="table table-dark">
 			  <thead>
 			    <tr> 
 			      <th>Name</th>
 			      <th>Number</th>
-			      <th>Price</th>
+			      <th>Amount</th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -61,7 +61,7 @@ selected
 
 		<div class="half_page">
 			
-		<h4 class="stat_table_title">Monthly revenue</h4>
+		<h4 class="stat_table_title">Transaction History</h4>
 
 			<table class="table table-dark">
 			  <thead>
@@ -69,6 +69,7 @@ selected
 			      <th>Time</th>
 			      <th>Game Name</th>
 			      <th>Price</th>
+                  <th>Buyer</th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -77,6 +78,7 @@ selected
 			      <td>{{item.0}}</td>
 			      <td>{{item.1}}</td>
 			      <td>€{{item.2}}</td>
+                  <td>{{item.3}}</td>
 			    </tr>
 			    {% endfor %}
 			  </tbody>

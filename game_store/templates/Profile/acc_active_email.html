@@ -1,11 +1,15 @@
-{#{% extends "base.html" %}#}
+{% extends "base.html" %}
 
-{#{% block title %}Log-in{% endblock %}#}
+{% block title %}Log-in{% endblock %}
 
 {% block content %}
-{% autoescape off %}
 Hi {{ user.username }},
 Please click on the link to confirm your registration,
-http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
-{% endautoescape %}
+{#http://{{ domain }}{% url 'activate' uidb64=uid token=token %}#}
+    <a href="{% url 'activate' uidb64=uid token=token %}">activate</a>
+{#http://127.0.0.1:8000/Profile/activate/{% url 'activate' uidb64=uid token=token %}#}
+
+{#    <a href="{% http://127.0.0.1:8000/Profile/activate %}"></a>#}
+{#http://127.0.0.1:8000/{% url 'activate' uidb64=uid token=token %}#}
+{#    <p>{{  token }}{{ uid }}</p>#}
 {% endblock %}
