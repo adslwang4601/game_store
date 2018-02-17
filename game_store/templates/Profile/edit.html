@@ -9,4 +9,9 @@
         {% csrf_token %}
     <p><input type="submit" value="Save changes"></p>
     </form>
+    <script>
+    $( function() {
+    $( "#id_date_of_birth" ).datepicker();
+    } );
+    </script>
 {% endblock %}

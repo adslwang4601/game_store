@@ -12,7 +12,7 @@ class User_Profile(models.Model):
     _ownedGames = models.ManyToManyField('gameinfo.Game', default=None, blank=True)
 
     def __str__(self):
-        return 'Profile for user {}'.format(self.user.username)
+        return self.user.username
 
 
 

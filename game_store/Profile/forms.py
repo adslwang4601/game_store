@@ -50,4 +50,6 @@ class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = User_Profile
         fields = ['date_of_birth', 'photo', 'city', 'country']
+        widgets = {'date_of_birth': forms.DateInput(attrs={'class': 'datepicker'})}
+
 
