@@ -3,6 +3,7 @@ from Profile.models import User_Profile
 from gameinfo.models import Game
 from django.db import models
 from django.utils import timezone
+from datetime import datetime
 # Create your models here.
 
 class Game_Score(models.Model):

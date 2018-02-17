@@ -8,24 +8,9 @@
 	<iframe id="gameIframe" src="{{game_url}}"> 
 		You	browser does not support iFrames! 
     </iframe>
-    <div id="modalInfo" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <form class="form-signin" id="detailInfo">
-                    <h3 class="form-signin-heading" id="modalMessage">Title</h3>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     <script type="text/javascript">
         // Global variable used to detect whether the user has played or not.
-        var current_score = 0;
+        // var current_score = 0;
         window.addEventListener("message", receiveMessage);
         var origin;
         function receiveMessage(event)
@@ -125,7 +110,6 @@
                 }
             });
         }
-
         function tryParseJSON (jsonString){
             try {
                 var o = JSON.parse(jsonString);
