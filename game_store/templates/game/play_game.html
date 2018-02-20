@@ -116,3 +116,30 @@
     });
     </script>
 {% endblock %}
+
+{% block sidebar %}
+    {% load staticfiles %}
+    <div id="sidebarContent">
+        <h2>{{ game.name }}</h2>
+        <br>
+        <br>
+        <h4 >Top 10 players</h4>
+        <table class="leader_board">
+            <thead>
+                <tr>
+                    <th class="col-lg-auto">Username</th>
+                    <th class="col-lg-auto">Score</th>
+                </tr>
+            </thead>
+            <tbody id="top_players">
+            {% for s in ranking %}
+            <tr>
+                <td class="col-lg-auto">{{ s.player }}</td>
+                <td class="col-lg-auto">{{ s.score}}</td>
+            </tr>
+         {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{%  endblock %}

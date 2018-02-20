@@ -15,6 +15,7 @@ from django.http.response import HttpResponseRedirect, HttpResponse, JsonRespons
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Saved_Game,Game_Score
 from gameinfo.models import Game
+from players.models import Game_Score
 import json
 
 @login_required(login_url='log_in')
@@ -36,7 +37,9 @@ def play_game(request,game_id):
         return HttpResponseRedirect(reverse("game_list"))
 
     if request.method == 'GET':
-        context = {'game': game.to_json(),'game_url': game.url}
+        high_scores = Game_Score.objects.filter(played_game=game).order_by("-score")[0:10]
+        ranking = [s.to_json() for s in high_scores]
+        context = {'game': game.to_json(),'game_url': game.url, 'ranking': ranking }
         return render(request,"game/play_game.html", context)
 
     elif request.method == 'POST':
@@ -91,7 +94,8 @@ def play_game(request,game_id):
 def player_game_score(request, game_id):
         game = Game.objects.get(id=game_id)
         try:
-            game_scores = Game_Score.objects.filter(played_game=game,_player=request.user.user_profile).order_by("-score")
+            game_scores = Game_Score.objects.filter(played_game=game,
+                                                    _player=request.user.user_profile).order_by("-score")
         except ObjectDoesNotExist:
             return HttpResponse("No game score available")
         scores = [s.to_json() for s in game_scores]
