@@ -40,7 +40,7 @@
                 <a href="{% url 'search_all'  %}">All</a>
             </li>
             {% for c in categories %}
-            <li>
+            <li {% if category.slug == c.slug %}class="selected"{% endif %}>
                 <a href="{%  url 'search_category' c.slug %}">{{ c.name }}</a>
             </li>
         {% endfor %}
