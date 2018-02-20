@@ -1,124 +1,118 @@
 {% extends "base.html" %}
 
 {% block content_title %}	
-	PLAY!
+	Play Game
 {% endblock %}
 
 {% block content %}		
-	<iframe id="gameIframe" src="{{game_url}}"> 
+	<iframe id="game_iframe" src="{{game_url}}">
 		You	browser does not support iFrames! 
     </iframe>
-    <script type="text/javascript">
-        // Global variable used to detect whether the user has played or not.
-        // var current_score = 0;
+    <script>
+    $( document ).ready(function() {
         window.addEventListener("message", receiveMessage);
-        var origin;
-        function receiveMessage(event)
-        {
-            var message =  {
-                    messageType: "ERROR"
-                };
 
-            if(event.data.messageType == "SCORE"){
+        function receiveMessage(event) {
+            var message = {
+                messageType: "ERROR"
+            };
+            if (event.data.messageType == "SCORE") {
                 var score = parseFloat(event.data.score);
-                if(isNaN(score)){
+                if (isNaN(score)) {
                     message.info = "Invalid Score";
-                    sendMessageToIFrame(message);
+                    sendMessageToGame(message);
                     return;
                 }
-                // Save into this global variable so we can enable fb sharing
-                current_score = event.data.score;
-                sendData(event.data,"#");
-                $('#score').text(score);
-
-            }else if(event.data.messageType == "SAVE"){
-                if(!tryParseJSON(JSON.stringify(event.data.gameState))){
+                sendData(event.data, "#");
+            }
+            if (event.data.messageType == "SAVE") {
+                if (!tryParseJSON(JSON.stringify(event.data.gameState))) {
                     message.info = "Invalid json format";
-                    sendMessageToIFrame(message);
+                    sendMessageToGame(message);
                     return;
                 }
                 event.data.gameState = JSON.stringify(event.data.gameState);
-                sendData(event.data,"#");
+                sendData(event.data, "#");
 
-            }else if(event.data.messageType == "LOAD_REQUEST"){
-                sendData(event.data,"#");
-
-            }else if(event.data.messageType == "SETTING"){
+            }
+            if (event.data.messageType == "LOAD_REQUEST") {
+                sendData(event.data, "#");
+            }
+            if (event.data.messageType == "SETTING") {
                 var width = parseInt(event.data.options.width);
                 var height = parseInt(event.data.options.height);
-                if(!isNaN(width)){
-                    if(width>800){
+                if (!isNaN(width)) {
+                    if (width > 800)
                         width = 800;
-                    }else if(width<20){
+                    if (width < 20)
                         width = 20;
-                    }
-                    $('#gameIframe').css('width',width);
+                    $('#game_iframe').css('width', width);
                 }
-                if(!isNaN(height)){
-                    if(height>1000){
+                if (!isNaN(height)) {
+                    if (height > 1000)
                         height = 1000;
-                    }else if(height<20){
+                    if (height < 20)
                         height = 20;
-                    }
-                    $('#gameIframe').css('height',height);
+                    $('#game_iframe').css('height', height);
                 }
             }
         }
-        function sendMessageToIFrame(message){
-            var iframe = document.getElementById('gameIframe');
-            if(iframe){
-                iframe.contentWindow.postMessage(message, "*");
-            }else{
-                $('#modalMessage').text("Ops, game not found!");
-                $("#modalInfo").removeClass('info done');
-                $("#modalInfo").addClass('error');
-                $("#modalInfo").modal();
+
+        function sendMessageToGame(message) {
+            var game_iframe = document.getElementById('game_iframe');
+            if (game_iframe) {
+                game_iframe.contentWindow.postMessage(message, "*");
+            } else {
+                alert("Game Iframe could not be found!");
             }
         }
-        function sendData(data, url){
+
+        function sendData(data, url) {
             data.csrfmiddlewaretoken = "{{ csrf_token  }}";
             var message = {};
             $.ajax({
-                method:"POST",
+                method: "POST",
                 url: url,
                 data: data,
-                success:function(data) {
-                    if (data.error){
-                        message =  {
+                success: function (response) {
+                    if (response.error) {
+                        message = {
                             messageType: "ERROR",
-                            info: data.error
+                            info: response.error
                         };
-                        sendMessageToIFrame(message);
+                        sendMessageToGame(message);
                     }
                     else {
-                        if(data.result){
+                        if (response.result) {
                             message.messageType = "LOAD";
-                            message.gameState = jQuery.parseJSON(data.result);
-                            sendMessageToIFrame(message);
-                            $('#score').text(message.score);
+                            message.gameState = jQuery.parseJSON(response.result);
+                            sendMessageToGame(message);
                         }
                     }
                 },
-                error: function (data) {
-                    if (data.error){
-                        message =  {
+                error: function (response) {
+                    if (response.error) {
+                        message = {
                             messageType: "ERROR",
-                            info: data.error
+                            info: response.error
                         };
-                        sendMessageToIFrame(message);
+                        sendMessageToGame(message);
                     }
                 }
             });
         }
-        function tryParseJSON (jsonString){
+
+        function tryParseJSON(jsonString) {
             try {
-                var o = JSON.parse(jsonString);
-                if (o && typeof o === "object" && o !== null) {
+                var obj = JSON.parse(jsonString);
+                if (obj && typeof obj === "object" && obj !== null) {
                     return true;
                 }
             }
-            catch (e) { }
-            return false;
+            catch (e) {
+                return false;
+            }
         }
+    });
     </script>
 {% endblock %}
