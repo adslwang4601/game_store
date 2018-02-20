@@ -41,13 +41,33 @@ def game_leader_board(request,game_id):
     context = {"scores":scores}
     return render(request, 'game/game_leader_board.html', context)
 
+def search_all(request):
+    categories = Category.objects.all()
+    games = Game.objects.all()
+    return  render(request,'game/search_all.html',{'categories':categories,'games':games})
 
 def search_game(request):
     q = request.GET.get('q')
+    categories = Category.objects.all()
     if not q:
-        return HttpResponseRedirect(reverse('game_list'))
+        return HttpResponseRedirect(reverse('search_all'))
     games = Game.objects.filter(name__icontains=q)
-    return render(request,'game/search.html',{"games":games})
+    return render(request,'game/search.html',{'categories':categories,'games':games})
+
+def search_game_category(request,category_slug =None):
+    category = None
+    categories = Category.objects.all()
+    if category_slug == None:
+        games = Game.objects.all()
+        return render(request,'game/search_all.html',{'categories':categories,'games':games})
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        games = Game.objects.filter(category=category)
+        return render(request,
+                  'game/search_category.html',
+                  {'category': category,
+                   'categories': categories,
+                   'games': games})
 
 def leader_board(request,category_slug=None):
     category = None

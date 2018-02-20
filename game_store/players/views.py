@@ -39,7 +39,11 @@ def play_game(request,game_id):
     if request.method == 'GET':
         high_scores = Game_Score.objects.filter(played_game=game).order_by("-score")[0:10]
         ranking = [s.to_json() for s in high_scores]
-        player_highest_score = Game_Score.objects.filter(played_game=game,_player=request.user.user_profile).order_by("-score")[0]
+        if Game_Score.objects.filter(played_game=game,_player=request.user.user_profile).exists():
+            player_highest_score = Game_Score.objects.filter(played_game=game,
+                                                             _player=request.user.user_profile).order_by("-score")[0]
+        else:
+            player_highest_score = 0
         context = {'game': game.to_json(),'game_url': game.url, 'ranking': ranking,"player_highest_score": player_highest_score}
         return render(request,"game/play_game.html", context)
 
