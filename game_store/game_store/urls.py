@@ -28,6 +28,7 @@ sys.path.append("..")
 
 
 urlpatterns = [
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name="game/dashboard.html"), name='dashboard'),
     path('cart/', include('cart.urls'), name='cart'),

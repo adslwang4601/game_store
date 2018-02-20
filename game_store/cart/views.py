@@ -23,7 +23,6 @@ from django.contrib.auth.decorators import permission_required
 
 
 @login_required
-@require_GET
 @permission_required(perm='Profile.players')
 def cart_detail(request):
     cart = Cart(request)
@@ -32,7 +31,6 @@ def cart_detail(request):
 
 
 @login_required
-@require_POST
 @permission_required(perm='Profile.players')
 def cart_add(request, game_id):
     cart = Cart(request)

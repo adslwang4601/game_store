@@ -3,7 +3,7 @@
 {% block content %}
   <div id="header">
         <a href="/" class="logo">My shop</a>
-    </div>
+  </div>
 {#    <div id="subheader">#}
 {#       <div class="cart">#}
 {#            {% with total_items=cart|length %}#}
@@ -34,4 +34,6 @@
             </form>
         </div>
     </div>
+    {% load social_share %}
+    {% post_to_facebook  game.get_absolute_url "Share to facebook"%}
 {% endblock %}

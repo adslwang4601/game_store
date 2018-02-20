@@ -9,7 +9,7 @@ from django.contrib.auth.models import Group
 
 
 def testOrder(self):
-    us1 = User.objects.create(username="profile1", password="12345678", email="xx@gmail.com")
+    us1 = User.objects.create(username="test1", password="12345678", email="xx@gmail.com")
     category1 = Category.objects.create(name="Action")
     category2 = Category.objects.create(name="Sports")
     profile1 = User_Profile.objects.create(user=us1, activationToken="5bc8d00c-52b2-4dc0-9b47-b5920248de39")
