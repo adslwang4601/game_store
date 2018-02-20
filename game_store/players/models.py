@@ -28,12 +28,11 @@ class Game_Score(models.Model):
 
 class Saved_Game(models.Model):
     played_game = models.ForeignKey(Game,on_delete=models.CASCADE)
-    status = models.TextField()
+    state = models.TextField()
     saved_time = models.DateTimeField(default=timezone.now)
-    settings = models.TextField()
     _player = models.ForeignKey(User_Profile,on_delete=models.CASCADE)
     
 
     def __str__(self):
-        return str(self.status)
+        return str(self.state)
 
