@@ -57,7 +57,7 @@ def play_game(request,game_id):
                                       _player=request.user.user_profile)
             else:
                 response['error'] = scoreForm.errors
-            return  JsonResponse(response)
+            return JsonResponse(response)
 
         elif  request.POST.get('messageType') == 'SAVE':
             saveForm = SaveForm(request.POST)

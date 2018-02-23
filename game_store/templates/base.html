@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css"  href="{% static "css/cart.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-social.css' %}" />
 
+
     {% block pluggable_style %}
     {% endblock %}
     <script src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
@@ -37,21 +38,10 @@
 </head>
 
 <body>
-    {% comment %}
-        The navbar is displayed in the top of the page and is fixed in each page
-    {% endcomment %}
-
-
-    {% comment %}
-        Content displays the most important part of the page, could be a form for login or a list of game.
-    {% endcomment %}
     {% include "./navbar.html" %}
     <div class="container">
         <div class="row" id="message">
-            <div class="col-md-8" id="content">
-                {% comment %}
-                    List of messages used to deliver informations, warnings or errors to the user
-                {% endcomment %}
+            <div class="col-lg-8" id="content">
                 {% if messages %}
                 <ul class="messages">
                     {% for message in messages %}
@@ -62,9 +52,6 @@
                     {% endfor %}
                 </ul>
                 {% endif %}
-                {% comment %}
-                    List errors generated from the form
-                {% endcomment %}
                 {% if form.erroros %}
                     {% for field in form %}
                         {% for error in field.errors %}
@@ -80,15 +67,10 @@
                     {% endfor %}
                 {% endif %}
 
-                {% block content %}{% endblock %}
-                {% comment %}
-                    Displayed in same page, it helps the user with filter or other functionality
-                {% endcomment %}
-            </div>
-            <div id="sidebar" class="col-md-4">
-                {% block sidebar %}{% endblock %}
             </div>
         </div>
+
+    {% block content %}{% endblock %}
     </div>
 
 </body>

@@ -22,7 +22,8 @@ def game_list(request, category_slug=None):
         games = games.filter(category=category)
     return render(request,
                   'gameinfo/list.html',
-                  {'category': category,
+                  {'user': request.user,
+                  'category': category,
                   'categories': categories,
                   'games': games})
 

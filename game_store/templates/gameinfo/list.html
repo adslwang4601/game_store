@@ -1,11 +1,15 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock %}
+{% block title %}Game List{% endblock %}
 {% block content %}
-  <div id="header">
-        <a href="/" class="logo">My shop</a>
-  </div>
-    <div id="subheader">
-        <div class="cart">
+{#  <div id="header">#}
+{#        <a href="/" class="logo">My shop</a>#}
+{#  </div>#}
+<div class="row">
+    <div class="col-lg-3">
+        {% for group in request.user.groups.all %}
+        {% if user.is_authenticated and group.name == 'players' %}
+        <div id="subheader">
+
             {% with total_items=cart|length %}
                 {% if cart|length > 0 %}
                     Your cart:
@@ -17,35 +21,65 @@
                     Your cart is empty.
                 {% endif %}
             {% endwith %}
+
         </div>
     </div>
-    <div id="content">
-        <div id="sidebar">
-        <h3>Categories</h3>
-        <ul>
-            <li {% if not category %}class="selected"{% endif %}>
-                <a href="{% url "game_list" %}">All</a>
-            </li>
-        {% for c in categories %}
-            <li {% if category.slug == c.slug %}class="selected"{% endif %}>
-                <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
-            </li>
-        {% endfor %}
-        </ul>
-    </div>
-    <div id="main" class="product-list">
-        <h1>{% if category %}{{ category.name }}{% else %}games{% endif %}</h1>
-        {% for game in games %}
-            <div class="item">
-                <a href="{{ game.get_absolute_url }}">
-                    <img src="{{ game.image }}">
-                </a>
-                <p>
-                <a href="{{ game.get_absolute_url }}">{{ game.name }}</a><br>
-                    ${{ game.price }}
-                </p>
+    {% endif %}
+    {% endfor %}
+</div>
+
+<div class="row">
+            <div class="col-lg-5, col-sm-5">
+                <div id="sidebar">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li {% if not category %}class="selected"{% endif %}>
+                            <a href="{% url "game_list" %}">All</a>
+                        </li>
+                    {% for c in categories %}
+                        <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+                            <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
             </div>
-        {% endfor %}
-    </div>
-    </div>
+
+
+            <div class="col-lg-6">
+                <h3>{% if category %}{{ category.name }}{% else %}games{% endif %}</h3>
+                 <div class="row">
+                        {% for game in games %}
+                            <div class="col-lg-2 col-md-2 mb-2">
+                                <a href="{{ game.get_absolute_url }}">
+                                    <img height="150" width="150" src="{{ game.image }}">
+                                </a>
+
+                                <div class="card-body">
+                                    <p>
+                                    <a href="{{ game.get_absolute_url }}">{{ game.name }}</a><br>
+                                        ${{ game.price }}
+                                    </p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                 </div>
+            </div>
+</div>
+
+{#    <div id="main" class="product-list">#}
+{#        <h1>{% if category %}{{ category.name }}{% else %}games{% endif %}</h1>#}
+{#        {% for game in games %}#}
+{#            <div class="item">#}
+{#                <a href="{{ game.get_absolute_url }}">#}
+{#                    <img src="{{ game.image }}">#}
+{#                </a>#}
+{#                <p>#}
+{#                <a href="{{ game.get_absolute_url }}">{{ game.name }}</a><br>#}
+{#                    ${{ game.price }}#}
+{#                </p>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    </div>#}
+
 {% endblock %}

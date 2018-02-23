@@ -12,7 +12,8 @@ class Developer_GameForm(ModelForm):
     description = forms.CharField(required=True, widget=forms.Textarea())
     # We redefine price so we can define the maximum number of decimals
     price = forms.DecimalField(required=True, decimal_places=2, max_digits=9)
-
+    # slug = forms.ChoiceField(choices=[('action', 'action'), ('puzzle', 'puzzle'),
+    #                                   ('adventure', 'adventure'), ('strategy', 'strategy')])
     # Populate at runtime
     category = forms.ModelChoiceField(required=True, queryset=None)
 
