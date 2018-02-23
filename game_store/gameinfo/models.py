@@ -25,6 +25,9 @@ class Category(models.Model):
     def filtered(self):
         return reverse("leader_board_category",args=[self.slug])
 
+    def search(self):
+        return  reverse('search_category',args=[self.slug])
+
 ''' Model for game'''
 class Game(models.Model):
     '''

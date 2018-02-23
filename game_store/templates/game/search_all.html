@@ -30,14 +30,13 @@
         </tbody>
       </table>
       </div>
-
 {% endblock %}
 
 {% block sidebar %}
     <div id="sidebarContent">
         <h3>Categories</h3>
         <ul>
-            <li>
+            <li  {% if not category %}class="selected"{% endif %}>
                 <a href="{% url 'search_all' %}">All</a>
             </li>
             {% for c in categories %}
@@ -47,4 +46,5 @@
         {% endfor %}
         </ul>
     </div>
+
 {% endblock %}
