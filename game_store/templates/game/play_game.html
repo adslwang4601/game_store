@@ -1,19 +1,42 @@
 {% extends "base.html" %}
 
-{% block content_title %}	
+{% block content_title %}
 	Play Game
 {% endblock %}
 
 {% block content %}
     <h2>{{ game.name }} &nbsp &nbsp  &nbsp </h2>
     <h5>My Highest Score: {{ player_highest_score }}</h5>
-	<iframe id="game_iframe" src="{{game_url}}">
-		You	browser does not support iFrames! 
+	<iframe id="game_iframe" src={{game_url}}>
+		You	browser does not support iFrames!
     </iframe>
+    {% block sidebar %}
+    {% load staticfiles %}
+    <div id="sidebarContent">
+        <h4 >Top 10 players  &nbsp &nbsp  &nbsp <button class="btn btn-secondary  btn-outline-success" id = "fresh" type="button"><a href="{% url 'play_game' game.id %}">Refresh</a></button>
+</h4>
+        <table class="leader_board">
+            <thead>
+                <tr>
+                    <th class="col-lg-auto">Username</th>
+                    <th class="col-lg-auto">Score</th>
+                </tr>
+            </thead>
+            <tbody id="top_players">
+            {% for s in ranking %}
+            <tr>
+                <td class="col-lg-auto">{{ s.player }}</td>
+                <td class="col-lg-auto">{{ s.score}}</td>
+            </tr>
+         {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{%  endblock %}
     <script>
     $( document ).ready(function() {
         window.addEventListener("message", receiveMessage);
-
         function receiveMessage(event) {
             var message = {
                 messageType: "ERROR"
@@ -35,7 +58,6 @@
                 }
                 event.data.gameState = JSON.stringify(event.data.gameState);
                 sendData(event.data, "#");
-
             }
             if (event.data.messageType == "LOAD_REQUEST") {
                 sendData(event.data, "#");
@@ -59,7 +81,6 @@
                 }
             }
         }
-
         function sendMessageToGame(message) {
             var game_iframe = document.getElementById('game_iframe');
             if (game_iframe) {
@@ -68,7 +89,6 @@
                 alert("Game Iframe could not be found!");
             }
         }
-
         function sendData(data, url) {
             data.csrfmiddlewaretoken = "{{ csrf_token  }}";
             var message = {};
@@ -103,7 +123,6 @@
                 }
             });
         }
-
         function tryParseJSON(jsonString) {
             try {
                 var obj = JSON.parse(jsonString);
@@ -119,27 +138,6 @@
     </script>
 {% endblock %}
 
-{% block sidebar %}
-    {% load staticfiles %}
-    <div id="sidebarContent">
-        <h4 >Top 10 players  &nbsp &nbsp  &nbsp <button class="btn btn-secondary  btn-outline-success" id = "fresh" type="button"><a href="{% url 'play_game' game.id %}">Refresh</a></button>
-</h4>
-        <table class="leader_board">
-            <thead>
-                <tr>
-                    <th class="col-lg-auto">Username</th>
-                    <th class="col-lg-auto">Score</th>
-                </tr>
-            </thead>
-            <tbody id="top_players">
-            {% for s in ranking %}
-            <tr>
-                <td class="col-lg-auto">{{ s.player }}</td>
-                <td class="col-lg-auto">{{ s.score}}</td>
-            </tr>
-         {% endfor %}
-            </tbody>
-        </table>
-    </div>
 
-{%  endblock %}
+
+

@@ -55,9 +55,6 @@ form .errorlist{
     display: none;
 }
  */
-#sidebar{
-
-}
 
 .alert .alert-error{
     width: 90%;
@@ -345,12 +342,14 @@ form .errorlist{
 }
 
 #myTable th{
-    background-color: #2A6496;
+    background-color: #28A745;
+    color: white;
 }
 
 #myTable{
     border-radius: 6px;
     margin-bottom: 0px;
+    color: white;
 }
 
 #myTable > label{
@@ -454,6 +453,7 @@ input.hidden {
 #logo {
     color: #FFFFFF;
 }
+
 
 
 

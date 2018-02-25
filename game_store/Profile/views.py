@@ -66,8 +66,8 @@ def register(request):
                 devs_group.user_set.add(user_profile.user)
                 content_type = ContentType.objects.get_for_model(User_Profile)
                 permission_developer, created = Permission.objects.get_or_create(
-                    codename='developer',
-                    name='Developer',
+                    codename='developers',
+                    name='Developers',
                     content_type=content_type
                 )
                 user_profile.user.user_permissions.add(permission_developer)

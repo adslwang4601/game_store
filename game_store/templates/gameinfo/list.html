@@ -4,10 +4,10 @@
 {#  <div id="header">#}
 {#        <a href="/" class="logo">My shop</a>#}
 {#  </div>#}
+{% for group in request.user.groups.all %}
+{% if user.is_authenticated and group.name == 'players' %}
 <div class="row">
-    <div class="col-lg-3">
-        {% for group in request.user.groups.all %}
-        {% if user.is_authenticated and group.name == 'players' %}
+    <div class="col-lg-3 col-xs-3">
         <div id="subheader">
 
             {% with total_items=cart|length %}
@@ -24,12 +24,12 @@
 
         </div>
     </div>
-    {% endif %}
-    {% endfor %}
 </div>
+{% endif %}
+{% endfor %}
 
 <div class="row">
-            <div class="col-lg-5, col-sm-5">
+            <div class="col-lg-2, col-xs-6">
                 <div id="sidebar">
                     <h3>Categories</h3>
                     <ul>
@@ -46,22 +46,24 @@
             </div>
 
 
-            <div class="col-lg-6">
-                <h3>{% if category %}{{ category.name }}{% else %}games{% endif %}</h3>
+            <div class="col-lg-10">
+                <h3>{% if category %}{{ category.name }}{% else %}Games{% endif %}</h3>
                  <div class="row">
                         {% for game in games %}
-                            <div class="col-lg-2 col-md-2 mb-2">
-                                <a href="{{ game.get_absolute_url }}">
-                                    <img height="150" width="150" src="{{ game.image }}">
-                                </a>
+                                <div class="col-lg-4 col-md-4 mb-4">
+                                    <a href="{{ game.get_absolute_url }}">
+                                        <img height="150" width="150" src="{{ game.image }}">
+                                    </a>
 
-                                <div class="card-body">
-                                    <p>
-                                    <a href="{{ game.get_absolute_url }}">{{ game.name }}</a><br>
-                                        ${{ game.price }}
-                                    </p>
+                                    <div class="card-body">
+                                        <span>
+                                        <a href="{{ game.get_absolute_url }}">{{ game.name }}</a>
+                                        </span>
+                                        <span class="price">
+                                        €{{ game.price }}
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
                         {% endfor %}
                  </div>
             </div>

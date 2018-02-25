@@ -8,6 +8,7 @@ body {
 
 h1, h2, h3, h4, h5 , h6 {
     font-family: 'Ubuntu', sans-serif; font-weight:normal;
+    color:white;
 }
 
 a {
@@ -156,11 +157,11 @@ ul.errorlist {
     float: left;
 }
 
-#sidebar {
-    width:220px;
-    margin-top: 20px;
-    float:left;
-}
+/*#sidebar {*/
+    /*width:220px;*/
+    /*margin-top: 20px;*/
+    /*float:left;*/
+/*}*/
 
 #sidebar h3{
     color: white;
@@ -331,4 +332,14 @@ ul.errorlist {
 /*#game_list{*/
     /*float: inline;*/
 /*}*/
+
+.cart-body{
+    color:white;
+}
+
+.price{
+    color:white;
+    /*float: right;*/
+    margin-left: 80px;
+}
 

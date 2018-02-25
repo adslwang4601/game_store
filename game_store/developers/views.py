@@ -16,7 +16,7 @@ from django.db.models import Sum, Count
 
 
 @login_required(login_url='log_in')
-@permission_required(perm='Profile.developer')
+@permission_required(perm='Profile.developers')
 def developer_games(request):
     # List all the games published by the developer and provide a form for adding a new one
     if request.method == 'GET':
@@ -60,7 +60,7 @@ def developer_games(request):
 
 
 @login_required(login_url='log_in')
-@permission_required(perm='Profile.developer')
+@permission_required(perm='Profile.developers')
 def edit_game(request, game_id):
     if request.method == 'GET':
 
@@ -102,7 +102,7 @@ def edit_game(request, game_id):
 
 
 @login_required(login_url='log_in')
-@permission_required(perm='Profile.developer')
+@permission_required(perm='Profile.developers')
 def request_developer_statistics(request):
 
     year = request.GET.get('year')
@@ -123,6 +123,8 @@ def request_developer_statistics(request):
 
     return render(request, "developers/dev_stats.html", context)
 
+@login_required(login_url='log_in')
+@permission_required(perm='Profile.developers')
 def get_transactions_by_game(user, year=None, reverse=True):
     games = Game.objects.filter(publisher=user)
 
@@ -161,6 +163,8 @@ def get_transactions_by_game(user, year=None, reverse=True):
 
     return sorted(bought_counts, key=lambda k: k['revenue'], reverse=reverse)
 
+@login_required(login_url='log_in')
+@permission_required(perm='Profile.developers')
 def get_transaction_history(user, year=None):
     # 1. 提取游戏中包含某个作者的订单
     # 2. 提取该作者的所有游戏
