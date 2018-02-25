@@ -25,7 +25,7 @@ SECRET_KEY = 'y%=tjw44_7xm+&a+v7kwb8h40_c0s37j4-pcdmwy9rthz26p^i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://calm-mountain-93740.herokuapp.com/', 'http://127.0.0.1:8000']
+ALLOWED_HOSTS = ['https://calm-mountain-93740.herokuapp.com/', '127.0.0.1']
 
 SOCIAL_AUTH_USER_MODEL = 'auth.User'
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True

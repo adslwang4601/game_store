@@ -6,34 +6,6 @@ selected
 
 {% block content %}
 
-	<h3 class="dev_form_title">Statistics</h3>
-
-	<div class="stat_year_wrapper">
-
-		<table class="table table-dark">
-
-			<tbody>
-				<td class="stats_year_link">
-					{% if last_year %}
-					<a href="/developer/stats/?year={{last_year}}">Last year</a> 
-					{% endif %}
-				</td>
-				<td class="stats_year_tittle">
-					{% if year %}
-					<span>Year: {{year}}</span> 
-					{% endif %}
-				</td>
-				<td class="stats_year_link">
-					{% if next_year %}
-					<a href="/developer/stats/?year={{next_year}}">Next year</a> 
-					{% endif %}
-				</td>
-			<tbody>
-
-		</table>
-
-	</div>
-
 	<div class="stat_tables_wrapper">
 		<div class="half_page">
 			<h4 class="stat_table_title">Sales for each game</h4>

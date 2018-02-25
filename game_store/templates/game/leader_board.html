@@ -3,7 +3,8 @@
 {% block title %}My games{% endblock %}
 
 {% block content %}
-
+<div class="row" style="margin-left: 5%;">
+    <div class="col-lg-10">
     <div class="table-responsive" id="myTableContainer">
       <table class="table table-striped" id="myTable">
         <thead>
@@ -33,21 +34,8 @@
         </tbody>
       </table>
     </div>
-
-
-     <script type="text/javascript">
-        $( "#navbar-MyGames" ).addClass('active');
-     </script>
-
-{% endblock %}
-
-{% block sidebar %}
-
-    <div id="sidebarContent">
-        <p class="lead">Your game collection.</p>
-        <p>In this page you can go through your game and choose the one that you want to play.</p>
-        <p>Open one game by click his name.</p>
     </div>
+    <div class="col-lg-2">
     <h3>Categories</h3>
     <ul>
         <li {% if not category %}class="selected"{% endif %}>
@@ -59,5 +47,9 @@
         </li>
     {% endfor %}
     </ul>
-
+    </div>
+</div>
+     <script type="text/javascript">
+        $( "#navbar-MyGames" ).addClass('active');
+     </script>
 {% endblock %}

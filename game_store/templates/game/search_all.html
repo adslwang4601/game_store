@@ -3,7 +3,8 @@
 {% block title %}My games{% endblock %}
 
 {% block content %}
-
+<div class="row" style="margin-left: 5%;">
+    <div class="col-lg-10">
     <div class="table-responsive" id="myTableContainer">
       <table class="table table-hover" id="myTable">
         <thead>
@@ -30,10 +31,8 @@
         </tbody>
       </table>
       </div>
-{% endblock %}
-
-{% block sidebar %}
-    <div id="sidebarContent">
+    </div>
+    <div class="col-lg-2">
         <h3>Categories</h3>
         <ul>
             <li  {% if not category %}class="selected"{% endif %}>
@@ -46,5 +45,5 @@
         {% endfor %}
         </ul>
     </div>
-
+</div>
 {% endblock %}
