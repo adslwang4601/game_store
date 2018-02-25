@@ -4,12 +4,7 @@
     <list default="true" id="954f1b84-3c9d-4f5a-9098-20e5087f57ae" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change beforePath="$PROJECT_DIR$/static/css/style.css" afterPath="$PROJECT_DIR$/static/css/style.css" />
-      <change beforePath="$PROJECT_DIR$/templates/Profile/acc_active_email.html" afterPath="$PROJECT_DIR$/templates/Profile/acc_active_email.html" />
-      <change beforePath="$PROJECT_DIR$/templates/Profile/log_in.html" afterPath="$PROJECT_DIR$/templates/Profile/log_in.html" />
-      <change beforePath="$PROJECT_DIR$/templates/Profile/register_done.html" afterPath="$PROJECT_DIR$/templates/Profile/register_done.html" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
-      <change beforePath="$PROJECT_DIR$/templates/game/dashboard.html" afterPath="$PROJECT_DIR$/templates/game/dashboard.html" />
-      <change beforePath="$PROJECT_DIR$/templates/navbar.html" afterPath="$PROJECT_DIR$/templates/navbar.html" />
+      <change beforePath="$PROJECT_DIR$/templates/game/play_game.html" afterPath="$PROJECT_DIR$/templates/game/play_game.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -72,12 +67,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="647">
-              <caret line="473" column="0" lean-forward="true" selection-start-line="473" selection-start-column="0" selection-end-line="473" selection-end-column="0" />
+            <state relative-caret-position="728">
+              <caret line="475" column="16" lean-forward="false" selection-start-line="475" selection-start-column="16" selection-end-line="475" selection-end-column="16" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="play_game.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/game/play_game.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="16" column="55" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="55" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h4#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,18 +137,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Profile/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-810">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -158,7 +155,6 @@
         <option value="$PROJECT_DIR$/players/models.py" />
         <option value="$PROJECT_DIR$/players/tests.py" />
         <option value="$PROJECT_DIR$/players/forms.py" />
-        <option value="$PROJECT_DIR$/templates/game/play_game.html" />
         <option value="$PROJECT_DIR$/gameinfo/models.py" />
         <option value="$PROJECT_DIR$/templates/game/search.html" />
         <option value="$PROJECT_DIR$/gameinfo/urls.py" />
@@ -173,6 +169,7 @@
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/navbar.html" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
+        <option value="$PROJECT_DIR$/templates/game/play_game.html" />
       </list>
     </option>
   </component>
@@ -222,35 +219,18 @@
             <path>
               <item name="game_store" type="b2602c69:ProjectViewProjectNode" />
               <item name="game_store" type="462c0819:PsiDirectoryNode" />
-              <item name="Profile" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="game_store" type="b2602c69:ProjectViewProjectNode" />
-              <item name="game_store" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="game_store" type="b2602c69:ProjectViewProjectNode" />
               <item name="game_store" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="game_store" type="b2602c69:ProjectViewProjectNode" />
-              <item name="game_store" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="game_store" type="b2602c69:ProjectViewProjectNode" />
               <item name="game_store" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Profile" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="game_store" type="b2602c69:ProjectViewProjectNode" />
-              <item name="game_store" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="registration" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -567,14 +547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/game/play_game.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gameinfo/tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -691,7 +663,7 @@
         <state relative-caret-position="189">
           <caret line="7" column="67" lean-forward="false" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="67" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -795,9 +767,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="647">
-          <caret line="473" column="0" lean-forward="true" selection-start-line="473" selection-start-column="0" selection-end-line="473" selection-end-column="0" />
+        <state relative-caret-position="728">
+          <caret line="475" column="16" lean-forward="false" selection-start-line="475" selection-start-column="16" selection-end-line="475" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/game/play_game.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="16" column="55" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="55" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h4#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

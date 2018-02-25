@@ -471,3 +471,7 @@ input.hidden {
     background-color: #3a526b;
     border-radius: 0.25rem;
 }
+
+#play_display{
+    color:white;
+}
