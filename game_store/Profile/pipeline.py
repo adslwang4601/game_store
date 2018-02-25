@@ -4,9 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 
 
 def save_profile(backend, user, response, *args, **kwargs):
-    print ('!!!!!!!!!!!')
     if backend.name == 'facebook':
-        print ('!!!!!!!!!!!')
         if not User_Profile.objects.filter(user=user).exists():
             user_profile = User_Profile.objects.create(user=user)
             user_profile.save()

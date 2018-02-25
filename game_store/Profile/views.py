@@ -18,23 +18,24 @@ from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import login_required
 
+
+
+# log_in view
 def user_login(request):
+    # If user has been authenticated,
     if request.user.is_authenticated:
-        # messages.warning(request, "You are already logged in.")
-        # return HttpResponseRedirect(redirect_to=reverse_lazy('dashboard', 'Store.urls'))
         return render(request, 'game/dashboard.html')
-    # else:
-        # return login(request, template_name='Profile/log_in.html')
+
     elif request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
             # returns a User object if the credentials are valid for a backend
             user = authenticate(username=cd['username'], password=cd['password'])
-            # return HttpResponse("Here's the text of the Web page.")
             if user is not None:
-            #     return HttpResponse("Here's the text of the Web page.")
                 if user.is_active:
                     login(request, user)
                     return render(request, 'game/dashboard.html')
@@ -60,7 +61,7 @@ def register(request):
             user_profile = User_Profile.objects.create(user=new_user)
             user_profile.save()
 
-
+            # If User apply as developer, create developers group and permission
             if user_form.cleaned_data['applyAsDeveloper']:
                 devs_group, created = Group.objects.get_or_create(name='developers')
                 devs_group.user_set.add(user_profile.user)
@@ -72,6 +73,7 @@ def register(request):
                 )
                 user_profile.user.user_permissions.add(permission_developer)
 
+            # If User apply as player, create players group and permission
             else:
                 players_group, created = Group.objects.get_or_create(name='players')
                 players_group.user_set.add(user_profile.user)
@@ -98,9 +100,9 @@ def register(request):
             email = EmailMessage(
                 mail_subject, message, to=[to_email]
             )
+            # email will be showed in the console
             email.send()
-            # return HttpResponse('Please confirm your email address to complete the registration')
-            # return render(request, 'Profile/register_done.html')
+            # activation page
             return render(request, 'Profile/acc_active_email.html', {
                 'user': new_user,
                 'domain': current_site.domain,
@@ -127,8 +129,8 @@ def activate(request, uidb64, token):
     else:
         return HttpResponse('Activation link is invalid!')
 
+@login_required(login_url='log_in')
 def edit(request):
-    # profile = Profile.objects.get(user=request.user)
     if request.method == 'POST':
         user_form = UserEditForm(instance=request.user,
                                  data=request.POST)
@@ -148,7 +150,7 @@ def edit(request):
     return render(request, 'Profile/edit.html', {'user_form': user_form,
                                                  'profile_form': profile_form})
 
-
+@login_required(login_url='log_in')
 def my_profile(request):
     user_form = UserEditForm(instance=request.user,
                              data=request.POST)

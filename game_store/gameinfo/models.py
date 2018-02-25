@@ -30,11 +30,6 @@ class Category(models.Model):
 
 ''' Model for game'''
 class Game(models.Model):
-    '''
-    Image sizes
-    - icon:  48x48
-    - image: 256x256
-    '''
     name = models.CharField(max_length=50, unique=True, blank=False)
     description = models.TextField(blank=True)
     publisher = models.ForeignKey(User_Profile, on_delete=models.CASCADE, blank=False)
@@ -43,10 +38,8 @@ class Game(models.Model):
     # url = models.URLField(unique=True, default="", blank=False)
     url = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=6, decimal_places=2, blank=False)
-    icon = models.URLField(default="http://www.yourimage.com")
-    image = models.URLField(default="http://www.yourimage.com")
-    # icon = models.ImageField("Game icon", null=True, blank=True, upload_to="games/icons")
-    # image = models.ImageField("Game image", null=True, blank=True, upload_to="games/image")
+    icon = models.URLField(default="http://www.image.com")
+    image = models.URLField(default="http://www.image.com")
     published_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
@@ -82,4 +75,3 @@ class Game_Sale(models.Model):
     buyer = models.ForeignKey(User_Profile, on_delete=models.CASCADE, blank=False)
     game = models.ForeignKey(Game, on_delete=models.CASCADE, blank=False)
     date = models.DateTimeField(blank=False,default=timezone.now)
-# Create your models here.

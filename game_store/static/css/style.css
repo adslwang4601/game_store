@@ -410,7 +410,7 @@ form .errorlist{
 #confirmButton{
     display: block;
     width: 20%;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
 }
 
 .center-div{
@@ -473,6 +473,12 @@ input.hidden {
 
 
 #play_display{
+
     color:white;
+}
+
+#type_game{
+    color:white;
+    font-size: 25px;
 }
 

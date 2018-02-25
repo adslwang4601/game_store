@@ -1,39 +1,45 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-  <div id="header">
-        <a href="/" class="logo">My shop</a>
-  </div>
-{#    <div id="subheader">#}
-{#       <div class="cart">#}
-{#            {% with total_items=cart|length %}#}
-{#                {% if cart|length > 0 %}#}
-{#                    Your cart:#}
-{#                    <a href="{% url "cart_detail" %}">#}
-{#                        {{ total_items }} item{{ total_items|pluralize }},#}
-{#                        ${{ cart.get_total_price }}#}
-{#                    </a>#}
-{#                {% else %}#}
-{#                    Your cart is empty.#}
-{#                {% endif %}#}
-{#        {% endwith %}#}
-{#        </div>#}
-{#    </div>#}
+<div class="row">
+   <div class="col-lg-4 col-xs-6">
+       <div id="subheader">
+           <div class="cart">
+                {% with total_items=cart|length %}
+                    {% if cart|length > 0 %}
+                        Your cart:
+                        <a href="{% url "cart_detail" %}">
+                            {{ total_items }} item{{ total_items|pluralize }},
+                            ${{ cart.get_total_price }}
+                        </a>
+                    {% else %}
+                        Your cart is empty.
+                   {% endif %}
+            {% endwith %}
+            </div>
+       </div>
+   </div>
+</div>
 
-    <div id="content">
-        <div class="game-detail">
-             <img src="{{ game.image }}">
-            <h1>{{ game.name }}</h1>
-            <h2><a href="{{ game.category.get_absolute_url }}">{{ game.category }}</a></h2>
-            <p class="price">${{ game.price }}</p>
-                {{ game.description|linebreaks }}
-            <form action="{% url "cart_add" game.id %}" method="post">
-            {{ cart_game_form }}
-            {% csrf_token %}
-            <input type="submit" value="Add to cart">
-            </form>
-        </div>
+<div class="row">
+    <div class="col-lg-4 col-xs-6">
+            <div class="game-detail">
+                 <img width="300px" height="400px" src="{{ game.image }}">
+                <h1>{{ game.name }}</h1>
+                <p style="color: white" class="type_game">Type: <a href="{{ game.category.get_absolute_url }}">{{ game.category }}</a></p>
+                <p class="price" style="color: white">Price: ${{ game.price }}</p>
+                <form action="{% url "cart_add" game.id %}" method="post">
+                {{ cart_game_form }}
+                {% csrf_token %}
+                <input type="submit" value="Add to cart">
+                </form>
+            </div>
     </div>
+
+    <div class="col-lg-4 col-xs-6">
+     <span id="description">Description: {{ game.description|linebreaks }}</span>
+    </div>
+</div>
     {% load social_share %}
     {% post_to_facebook  game.get_absolute_url "Share to facebook"%}
 {% endblock %}

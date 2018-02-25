@@ -41,7 +41,8 @@ a.button.light {
 }
 
 .text-right {
-    text-align:right;
+    float: right;
+    text-align:left;
 }
 
 /*table {*/
@@ -151,11 +152,11 @@ ul.errorlist {
     text-align: center;
 }
 
-#content {
-    padding:0 100px;
-    overflow:hidden;
-    float: left;
-}
+/*#content {*/
+    /*!*padding:0 100px;*!*/
+    /*overflow:hidden;*/
+    /*float: left;*/
+/*}*/
 
 /*#sidebar {*/
     /*width:220px;*/
@@ -216,8 +217,8 @@ ul.errorlist {
 }
 
 .product-detail .price {
-    color:#333;
-    font-size:28px;
+    color:white;
+    font-size:35px;
     font-weight:bold;
 }
 
@@ -337,9 +338,9 @@ ul.errorlist {
     color:white;
 }
 
-.price{
-    color:white;
-    /*float: right;*/
-    margin-left: 80px;
+
+#description{
+    color: white;
+    font-size: 15px;
 }
 

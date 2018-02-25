@@ -43,8 +43,8 @@ def developer_games(request):
         # Otherwise proceed.
         form = Developer_GameForm(request.POST)
         if not form.is_valid():
-            return HttpResponse(status=405, content="Invalid method.")
-            # return render(request, "registration/register.html", {'form': form})
+            messages.error(request=request, message='The form is invalid')
+            # return HttpResponse(status=405, content="Invalid method.")
         else:
             # Regardless of the user's choice, update the publisher of this game.
             form.instance.publisher = request.user.user_profile

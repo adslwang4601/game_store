@@ -5,6 +5,7 @@
 {% block title %}Checkout{% endblock %}
 
 {% block content %}
+
     <h1>Checkout</h1>
     
     <div class="order-info">
@@ -13,7 +14,7 @@
             {% for item in cart %}
             <li>
                 {{ item.game}}
-                <span>${{ item.total_price }}</span>
+                <span>${{ item.price }}</span>
             </li>
             {% endfor %}
         </ul>
