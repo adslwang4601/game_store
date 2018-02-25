@@ -3,9 +3,9 @@ Authors
 
 Last name           | First name | student number |Email
 --------------------|------------|----------------|------------
-Qiang 		|Huang          |                |<qiang.huang@aalto.fi>
-Qianqian            | Qin      |                |<qianqian.qin@aalto.fi>
-Addy               | Christian     |                |<addy.christiancrosbynii@aalto.fi>
+Qiang 		|Huang          |     599540           |<qiang.huang@aalto.fi>
+Qianqian            | Qin      |      601098          |<qianqian.qin@aalto.fi>
+Addy               | Christian     |   661588             |<addy.christiancrosbynii@aalto.fi>
 
 ## Project implementation
 ### Heroku URL
