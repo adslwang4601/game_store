@@ -454,6 +454,25 @@ input.hidden {
     color: #FFFFFF;
 }
 
+#log_in, #register{
+    /*width: 110px;*/
+    width: 10%;
+}
+
+#home{
+    margin-right: 2%;
+}
+
+#game_store, #leader_board{
+    margin: 0px 10px;
+}
+#game_store:hover, #leader_board:hover{
+    background-color: #3a526b;
+    border-radius: 0.25rem;
+}
 
 
+#play_display{
+    color:white;
+}
 
