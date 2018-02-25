@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block title %}Welcome{% endblock %}
 {% block content %}
-  <h1>Welcome {{ new_user.username }}!</h1>
-  <p>Your account has been successfully created. Now you can <a href="{% url "log_in" %}">log in</a>.</p>
+    <div style="text-align: center;color: #fff; background-color: transparent;font-size: 120%;">
+    <h1>Welcome {{ new_user.username }}!</h1>
+    <p>Your account has been successfully created. Now you can <a href="{% url "log_in" %}">log in</a>.</p>
+    </div>
 {% endblock %}
 
