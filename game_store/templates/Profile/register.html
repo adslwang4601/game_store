@@ -7,10 +7,12 @@
     <form method="POST" action="#" class="form-signin">
         <h1 class="form-signin-heading" id="local-title">Create an account</h1>
         {% csrf_token %}
-        <table class="spaced_table">
+        <table class="spaced_table" style="color: white">
         {{ form.as_table }}
         </table>
+        <div style="padding-left: 500px">
         <input type="submit" class="btn btn-lg btn-primary btn-block" value="Submit" id="confirmButton"/>
+        </div>
     </form>
 </div>
 {% endblock %}

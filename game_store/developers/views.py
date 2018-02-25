@@ -1,6 +1,6 @@
 import sys
 sys.path.append("..")
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http.response import HttpResponseRedirect, JsonResponse, HttpResponse
 from gameinfo.models import Game
 from django.contrib.auth.decorators import login_required
@@ -44,6 +44,7 @@ def developer_games(request):
         form = Developer_GameForm(request.POST)
         if not form.is_valid():
             messages.error(request=request, message='The form is invalid')
+            return redirect(reverse('dev_games'))
             # return HttpResponse(status=405, content="Invalid method.")
         else:
             # Regardless of the user's choice, update the publisher of this game.

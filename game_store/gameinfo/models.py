@@ -38,8 +38,8 @@ class Game(models.Model):
     # url = models.URLField(unique=True, default="", blank=False)
     url = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=6, decimal_places=2, blank=False)
-    icon = models.URLField(default="http://www.image.com")
-    image = models.URLField(default="http://www.image.com")
+    icon = models.URLField(max_length=500, default="http://www.image.com")
+    image = models.URLField(max_length=500, default="http://www.image.com")
     published_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

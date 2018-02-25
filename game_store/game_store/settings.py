@@ -25,7 +25,7 @@ SECRET_KEY = 'y%=tjw44_7xm+&a+v7kwb8h40_c0s37j4-pcdmwy9rthz26p^i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost:8000', '127.0.0.1']
+ALLOWED_HOSTS = ['https://calm-mountain-93740.herokuapp.com/', 'http://127.0.0.1:8000']
 
 SOCIAL_AUTH_USER_MODEL = 'auth.User'
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
@@ -38,18 +38,24 @@ SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
-    'cart',
-    'Profile',
+    # 'django.contrib.admin',
+    # 'django.contrib.auth',  # Authentication middleware
+    # 'django.contrib.contenttypes',
+    # 'django.contrib.sessions',  # Handle sessions
+    # 'django.contrib.messages',  # Allows message handling
+    # 'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'developers',
     'players',
     'gameinfo',
-    'django.contrib.sites',
+    'cart',
+    'Profile',
     'social_django',
     'django_social_share',
     'allauth',
@@ -180,7 +186,7 @@ AUTH_PROFILE_MODULE = 'Profile.User_Profile'
 if "DYNO" in os.environ:
     STATIC_ROOT = 'staticfiles'
     import dj_database_url
-    DATABASES['default'] =  dj_database_url.config()
+    DATABASES['default'] = dj_database_url.config()
 
     DEBUG = True # False, once service is succesfully deployed
     ALLOWED_HOSTS = ['*']
